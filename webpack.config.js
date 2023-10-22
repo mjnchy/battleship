@@ -15,14 +15,14 @@ module.exports = {
         use: ['style-loader', 'css-loader'],
       }
     ],
-    devtool: 'eval',
-    devServer: {
-      static: './dist',
-      open: {
-        app: {
-          name: 'google-chrome-stable',
-        }
+  },
+  devtool: 'eval',
+  devServer: {
+    static: './dist',
+    open: {
+      app: {
+        name: 'google-chrome-stable',
       }
-    },
+    }
   },
 }
