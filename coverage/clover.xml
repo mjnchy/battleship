@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1698083700650" clover="3.2.0">
-  <project timestamp="1698083700650" name="All files">
-    <metrics statements="14" coveredstatements="14" conditionals="6" coveredconditionals="4" methods="6" coveredmethods="6" elements="26" coveredelements="24" complexity="0" loc="14" ncloc="14" packages="2" files="2" classes="2"/>
+<coverage generated="1698099547763" clover="3.2.0">
+  <project timestamp="1698099547763" name="All files">
+    <metrics statements="15" coveredstatements="15" conditionals="6" coveredconditionals="4" methods="6" coveredmethods="6" elements="27" coveredelements="25" complexity="0" loc="15" ncloc="15" packages="2" files="2" classes="2"/>
     <package name="gameboard">
-      <metrics statements="10" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+      <metrics statements="11" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
       <file name="gameboard.js" path="/home/mijan/web_dev/the_odin_project/fullstack_js/projects/javascript/battleship/src/modules/gameboard/gameboard.js">
-        <metrics statements="10" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+        <metrics statements="11" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
         <line num="2" count="1" type="stmt"/>
         <line num="6" count="1" type="stmt"/>
-        <line num="12" count="4" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
         <line num="13" count="4" type="stmt"/>
         <line num="14" count="4" type="stmt"/>
-        <line num="16" count="4" type="stmt"/>
-        <line num="17" count="40" type="stmt"/>
+        <line num="15" count="4" type="stmt"/>
+        <line num="17" count="4" type="stmt"/>
         <line num="18" count="40" type="stmt"/>
-        <line num="19" count="400" type="stmt"/>
-        <line num="23" count="4" type="stmt"/>
+        <line num="19" count="40" type="stmt"/>
+        <line num="20" count="400" type="stmt"/>
+        <line num="28" count="4" type="stmt"/>
       </file>
     </package>
     <package name="ship">

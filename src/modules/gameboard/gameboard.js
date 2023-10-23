@@ -3,7 +3,8 @@ function Gameboard () {
     board1: createGrid(), board2: createGrid(), board3:createGrid(), board4: createGrid(),
 
     placeShip: function (grid, corX, corY) {
-      this[grid][corX][corY] = "ship placed";
+      let cell = this[grid][corX][corY];
+      cell.housesShip = true;
     },
   };
 };
@@ -16,7 +17,11 @@ function createGrid () {
   for (let i = 0; i < columns; i++) {
     grid[i] = [];
     for (let j = 0; j < rows; j++) {
-      grid[i][j] = j+(i*columns);
+      grid[i][j] = {
+        cell: j+(i*columns),
+        housesShip: false,
+        ship: null,
+      };
     }
   }
 

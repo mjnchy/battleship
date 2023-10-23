@@ -14,5 +14,5 @@ test("tests if ship methods are working properly", () => {
 test("tests gameBoard", () => {
   expect(gameBoard.board1).toBeDefined();
   gameBoard.placeShip("board1", 9, 9);
-  expect(gameBoard.board1[9][9]).toBe("ship placed")
+  expect(gameBoard.board1[9][9].housesShip).toBe(true)
 });
