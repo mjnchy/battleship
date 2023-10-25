@@ -4,13 +4,13 @@ function Gameboard () {
   const board = {
     player: {
       name: "p1",
-      main: createBoard(),
+      map: createBoard(),
       atk: createBoard(),
       ships: createShips()
     },
     enemy: {
       name: "p2",
-      main: createBoard(),
+      map: createBoard(),
       atk: createBoard(),
       ships: createShips()
     }
@@ -20,20 +20,22 @@ function Gameboard () {
     board,
 
     placeShip: (ship, corX, corY) => {
-      let target = board.player.main.grid[corX][corY];
+      let target = board.player.map.grid[corX][corY];
       target.housesShip = true;
       target.ship = board.player.ships[ship];
     },
 
     receiveAttack: (corX, corY) => {
-      const target = board.player.main.grid[corX][corY];
-      
-      if (board.player.main.tracker.includes(target.cell)) return "cannot attack the cordinate twitce"
-      else {
-        board.player.main.tracker.push(target.cell);
-        target.ship.hit();
-        board.player.main.totalAtks++;
-      };
+      const target = board.enemy.map.grid[corX][corY];
+      const trackerTarget = board.player.atk.grid[corX][corY];
+
+      if (board.enemy.map.tracker.includes(target.cell)) return "cannot attack the cordinate twice";
+      board.enemy.map.tracker.push(target.cell);
+      board.player.atk.tracker.push(target.cell);
+      target.ship? target.ship.hit(): null;
+      trackerTarget.housesShip = true;
+      board.enemy.map.totalAtks++;
+      board.player.atk.totalAtks++;
     },
   };
 };

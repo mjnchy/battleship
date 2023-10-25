@@ -10,25 +10,14 @@ test("tests if ship methods are working properly", () => {
   expect(ship.isSunk()).toBe(false);
 });
 
-// test("tests gameBoard", () => {
-//   let gameBoard = Gameboard();
-//   gameBoard.placeShip("carrier", 4, 5);
-//   expect(gameBoard.board.player.main.grid[4][5].housesShip).toBe(true);
-//   expect(gameBoard.board.player.main.grid[4][5].ship.hit()).toBe(1);
-//   expect(gameBoard.board.player.main.grid[4][5].ship.isSunk()).toBe(false);
-//   gameBoard.receiveAttack(4, 5);
-//   // const identifier = gameBoard.board.player.main.grid[4][5].cell;
-//   expect(gameBoard.board.player.main.totalAtks).toBe(1);
-//   expect(gameBoard.board.player.main.tracker.includes(45)).toBe(true);
-// });
-
 test("tests gameboard and its methods", () => {
   let gameBoard = Gameboard();
   let player = gameBoard.board.player;
+  let enemy = gameBoard.board.enemy;
   gameBoard.placeShip("carrier", 4, 5);
-  expect(player.main.grid[4][5].housesShip).toBe(true);
+  expect(player.map.grid[4][5].housesShip).toBe(true);
   gameBoard.receiveAttack(4, 5);
-  expect(player.main.totalAtks).toBe(1);
-  expect(player.main.tracker.includes(45)).toBe(true);
-  expect(gameBoard.receiveAttack(4, 5)).toBe("cannot attack the cordinate twitce");
+  expect(enemy.map.totalAtks).toBe(1);
+  expect(enemy.map.tracker.includes(45)).toBe(true);
+  expect(gameBoard.receiveAttack(4, 5)).toBe("cannot attack the cordinate twice");
 })
