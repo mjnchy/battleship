@@ -1,18 +1,29 @@
+import { Ship } from "../ship/ship.js";
+
 function Gameboard () {
   const board = {
     player: {
       name: "p1",
-      grid: createBoard(),
-      atkGrid: createBoard(),
+      main: createBoard(),
+      atk: createBoard(),
+      ships: createShips()
     },
     enemy: {
       name: "p2",
-      grid: createBoard(),
-      atkGrid: createBoard(),
+      main: createBoard(),
+      atk: createBoard(),
+      ships: createShips()
     }
   };
     
   return {
+    board,
+
+    placeShip: (ship, corX, corY) => {
+      let cor = board.player.main.grid[corX][corY];
+      cor.housesShip = true;
+      cor.ship = board.player.ships[ship];
+    },
   };
 };
 
@@ -40,6 +51,16 @@ function createBoard () {
   }
 
   return board;
+};
+
+function createShips () {
+  return {
+    carrier: Ship(5),
+    battleship: Ship(4),
+    destroyer: Ship(3),
+    submarine: Ship(2),
+    patrolboat: Ship(1),
+  };
 };
 
 function setBoard () {}

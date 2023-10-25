@@ -1,5 +1,5 @@
-function Ship (length, hitCount = 0, sunk = false) {
-  let ship = {length, hitCount, sunk};
+function Ship (length) {
+  let ship = {length, hitCount: 0, sunk: false};
   return {
     hit: function () { return this.isSunk() !== true? ++ship.hitCount: null },
     isSunk: function () { return ship.sunk = ship.hitCount === ship.length? true: false; },
