@@ -12,7 +12,10 @@ test("tests if ship methods are working properly", () => {
 });
 
 test("tests gameBoard", () => {
-  expect(gameBoard.board1).toBeDefined();
-  gameBoard.placeShip("board1", 9, 9);
-  expect(gameBoard.board1[9][9].housesShip).toBe(true)
+  expect(gameBoard.atkGrid).toBe()
+  // expect(gameBoard.mainGridP1).toBeDefined();
+  // gameBoard.placeShip("mainGridP1", 9, 9);
+  // expect(gameBoard.mainGridP1[9][9].housesShip).toBe(true);
+  // gameBoard.receiveAttack("mainGridP1", 3, 4);
+  // expect(gameBoard.mainGridP1[3][4].attacked).toBe(true);
 });

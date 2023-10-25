@@ -1,31 +1,47 @@
 function Gameboard () {
-  return {
-    board1: createGrid(), board2: createGrid(), board3:createGrid(), board4: createGrid(),
-
-    placeShip: function (grid, corX, corY) {
-      let cell = this[grid][corX][corY];
-      cell.housesShip = true;
+  const board = {
+    player: {
+      name: "p1",
+      grid: createBoard(),
+      atkGrid: createBoard(),
     },
+    enemy: {
+      name: "p2",
+      grid: createBoard(),
+      atkGrid: createBoard(),
+    }
+  };
+    
+  return {
   };
 };
 
-function createGrid () {
+function createBoard () {
   const rows = 10;
   const columns = 10;
-  const grid = [];
+  const board = {
+    grid: [],
+    tracker: [],
+    totalAtks: 0,
+  };
 
   for (let i = 0; i < columns; i++) {
-    grid[i] = [];
+    board.grid = [];
     for (let j = 0; j < rows; j++) {
-      grid[i][j] = {
-        cell: j+(i*columns),
+      let identifier = j+(i * columns);
+      board.grid[i][j] = {
+        cell: identifier,
         housesShip: false,
         ship: null,
       };
+
+      board.tracker[identifier] = false;
     }
   }
 
-  return grid;
+  return board;
 };
+
+function setBoard () {}
 
 export { Gameboard };
