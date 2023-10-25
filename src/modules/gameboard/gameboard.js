@@ -26,7 +26,7 @@ function createBoard () {
   };
 
   for (let i = 0; i < columns; i++) {
-    board.grid = [];
+    board.grid[i] = [];
     for (let j = 0; j < rows; j++) {
       let identifier = j+(i * columns);
       board.grid[i][j] = {
