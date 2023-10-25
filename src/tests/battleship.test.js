@@ -16,4 +16,8 @@ test("tests gameBoard", () => {
   expect(gameBoard.board.player.main.grid[4][5].housesShip).toBe(true);
   expect(gameBoard.board.player.main.grid[4][5].ship.hit()).toBe(1);
   expect(gameBoard.board.player.main.grid[4][5].ship.isSunk()).toBe(false);
+  gameBoard.receiveAttack(4, 5);
+  const identifier = gameBoard.board.player.main.grid[4][5].cell;
+  expect(gameBoard.board.player.main.tracker[identifier]).toBe(true);
+  expect(gameBoard.board.player.main.totalAtks).toBe(1);
 });

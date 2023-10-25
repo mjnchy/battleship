@@ -20,9 +20,20 @@ function Gameboard () {
     board,
 
     placeShip: (ship, corX, corY) => {
-      let cor = board.player.main.grid[corX][corY];
-      cor.housesShip = true;
-      cor.ship = board.player.ships[ship];
+      let target = board.player.main.grid[corX][corY];
+      target.housesShip = true;
+      target.ship = board.player.ships[ship];
+    },
+
+    receiveAttack: (corX, corY) => {
+      const target = board.player.main.grid[corX][corY];
+      
+      if (board.player.main.tracker[target.cell] == true) null
+      else {
+        board.player.main.tracker[target.cell] = true;
+        target.ship.hit();
+        board.player.main.totalAtks++;
+      };
     },
   };
 };
@@ -55,11 +66,11 @@ function createBoard () {
 
 function createShips () {
   return {
-    carrier: Ship(5),
-    battleship: Ship(4),
-    destroyer: Ship(3),
-    submarine: Ship(2),
-    patrolboat: Ship(1),
+    carrier: Ship("carrier", 5),
+    battleship: Ship("battleship", 4),
+    destroyer: Ship("destroyer", 3),
+    submarine: Ship("submarine" ,2),
+    patrolboat: Ship("patrolboat", 1),
   };
 };
 
