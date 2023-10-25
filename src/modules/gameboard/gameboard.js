@@ -28,9 +28,9 @@ function Gameboard () {
     receiveAttack: (corX, corY) => {
       const target = board.player.main.grid[corX][corY];
       
-      if (board.player.main.tracker[target.cell] == true) null
+      if (board.player.main.tracker.includes(target.cell)) return "cannot attack the cordinate twitce"
       else {
-        board.player.main.tracker[target.cell] = true;
+        board.player.main.tracker.push(target.cell);
         target.ship.hit();
         board.player.main.totalAtks++;
       };
@@ -56,8 +56,6 @@ function createBoard () {
         housesShip: false,
         ship: null,
       };
-
-      board.tracker[identifier] = false;
     }
   }
 
