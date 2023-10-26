@@ -15,6 +15,11 @@ function Gameboard () {
       ships: createShips()
     }
   };
+
+  board.player.atk.successfulAtks = [];
+  board.enemy.atk.successfulAtks = [];
+  board.player.atk.unsuccessfulAtks = [];
+  board.enemy.atk.unsuccessfulAtks = [];
     
   return {
     board,
@@ -36,7 +41,12 @@ function Gameboard () {
       board.player.atk.atkCors.push(target.cell);
       board.enemy.map.totalAtks++;
       board.player.atk.totalAtks++;
-      if (!target.ship) return "no ships were hit";
+      
+      if (!target.ship) {
+        board.player.atk.unsuccessfulAtks.push(target.cell);
+        return"no ships were hit"
+      };
+      board.player.atk.successfulAtks.push(target.cell);
       target.ship.hit();
       trackerTarget.housesShip = true;
       return "a ship was hit.";
