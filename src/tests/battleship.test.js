@@ -16,8 +16,9 @@ test("tests gameboard and its methods", () => {
   let enemy = gameBoard.board.enemy;
   gameBoard.placeShip("carrier", 4, 5);
   expect(player.map.grid[4][5].housesShip).toBe(true);
-  gameBoard.receiveAttack(4, 5);
+  expect(gameBoard.receiveAttack(4, 5)).toBe("no ships were hit");
   expect(enemy.map.totalAtks).toBe(1);
-  expect(enemy.map.tracker.includes(45)).toBe(true);
+  expect(enemy.map.tracker[45]).toBe(true);
+  expect(enemy.map.atkCors.includes(45)).toBe(true);
   expect(gameBoard.receiveAttack(4, 5)).toBe("cannot attack the cordinate twice");
 })

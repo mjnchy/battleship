@@ -29,13 +29,17 @@ function Gameboard () {
       const target = board.enemy.map.grid[corX][corY];
       const trackerTarget = board.player.atk.grid[corX][corY];
 
-      if (board.enemy.map.tracker.includes(target.cell)) return "cannot attack the cordinate twice";
-      board.enemy.map.tracker.push(target.cell);
-      board.player.atk.tracker.push(target.cell);
-      target.ship? target.ship.hit(): null;
-      trackerTarget.housesShip = true;
+      if (board.enemy.map.tracker[target.cell] == true) return "cannot attack the cordinate twice";
+      board.enemy.map.tracker[target.cell] = true;
+      board.player.atk.tracker[target.cell] = true;
+      board.enemy.map.atkCors.push(target.cell);
+      board.player.atk.atkCors.push(target.cell);
       board.enemy.map.totalAtks++;
       board.player.atk.totalAtks++;
+      if (!target.ship) return "no ships were hit";
+      target.ship.hit();
+      trackerTarget.housesShip = true;
+      return "a ship was hit.";
     },
   };
 };
@@ -46,6 +50,7 @@ function createBoard () {
   const board = {
     grid: [],
     tracker: [],
+    atkCors: [],
     totalAtks: 0,
   };
 
@@ -58,6 +63,7 @@ function createBoard () {
         housesShip: false,
         ship: null,
       };
+      board.tracker[identifier] = false;
     }
   }
 
