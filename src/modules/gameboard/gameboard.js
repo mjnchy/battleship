@@ -23,7 +23,6 @@ function Gameboard () {
     
   return {
     board,
-
     placeShip: (ship, corX, corY) => {
       let target = board.player.map.grid[corX][corY];
       target.housesShip = true;
@@ -82,11 +81,11 @@ function createBoard () {
 
 function createShips () {
   return {
-    carrier: Ship("carrier", 5),
-    battleship: Ship("battleship", 4),
-    destroyer: Ship("destroyer", 3),
-    submarine: Ship("submarine" ,2),
-    patrolboat: Ship("patrolboat", 1),
+    carrier: Ship("carrier"),
+    battleship: Ship("battleship"),
+    destroyer: Ship("destroyer"),
+    submarine: Ship("submarine"),
+    patrolboat: Ship("patrolboat"),
   };
 };
 

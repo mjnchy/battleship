@@ -1,8 +1,23 @@
-function Ship (name, length) {
-  let ship = {name, length, hitCount: 0, sunk: false};
+const shipLength = {
+  carrier: 5,
+  battleship: 4,
+  destroyer: 3,
+  submarine: 2,
+  patrolboat: 1
+};
+
+function Ship (name) {
+  if (!shipLength[name]) throw new Error("Invalid ship.");
+  const ship = {
+    name,
+    length: shipLength[name],
+    hitCount: 0,
+    sunk: false,
+  };
+
   return {
-    hit: function () { return this.isSunk() !== true? ++ship.hitCount: null },
-    isSunk: function () { return ship.sunk = ship.hitCount === ship.length? true: false; },
+    hit: () => ship.hitCount >= ship.length? null: ++ship.hitCount,
+    isSunk: () => ship.hitCount == ship.length? ship.sunk = true: false,
   };
 };
 

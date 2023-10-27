@@ -5,7 +5,8 @@ import { Gameboard } from "../modules/gameboard/gameboard.js";
 // let player = Player();
 
 test("tests if ship methods are working properly", () => {
-  let ship = Ship(5);
+  expect(() => {Ship("fail")}).toThrow();
+  let ship = Ship("carrier");
   expect(ship.hit()).toBe(1);
   expect(ship.isSunk()).toBe(false);
 });
