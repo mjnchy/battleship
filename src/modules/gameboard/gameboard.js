@@ -7,6 +7,10 @@ function Gameboard (name) {
   map.failed = [];
   enemyMap.success = [];
 
+  function isAttacked (x, y) {
+    return map.tracker[map.grid[x][y].identifier];
+  };
+
   function placeShip (ship, x, y) {
     if (map.grid[x][y].ship) throw new Error("Cannot place two ships at the same cordinates.");
     map.grid[x][y].ship = Ship(ship);
@@ -24,6 +28,7 @@ function Gameboard (name) {
     name,
     map,
     enemyMap,
+    isAttacked,
     placeShip,
     receiveAttack
   };
