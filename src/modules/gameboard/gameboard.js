@@ -1,55 +1,31 @@
 import { Ship } from "../ship/ship.js";
 
-function Gameboard () {
-  const board = {
-    player: {
-      name: "p1",
-      map: createBoard(),
-      atk: createBoard(),
-      ships: createShips()
-    },
-    enemy: {
-      name: "p2",
-      map: createBoard(),
-      atk: createBoard(),
-      ships: createShips()
-    }
+function Gameboard (name) {
+  let map = createBoard(),
+  enemyMap = createBoard();
+
+  map.failed = [];
+  enemyMap.success = [];
+
+  function placeShip (ship, x, y) {
+    if (map.grid[x][y].ship) throw new Error("Cannot place two ships at the same cordinates.");
+    map.grid[x][y].ship = Ship(ship);
   };
 
-  board.player.atk.successfulAtks = [];
-  board.enemy.atk.successfulAtks = [];
-  board.player.atk.unsuccessfulAtks = [];
-  board.enemy.atk.unsuccessfulAtks = [];
-    
+  function receiveAttack (x, y) {
+    const cor = [x, y];
+    const target = map.grid[x][y];
+    map.tracker[target.identifier] = true;
+    target.ship? map.grid[x][y].ship.hit(): map.failed.push(cor);
+    map.totalAtks++;
+  };
+
   return {
-    board,
-    placeShip: (ship, corX, corY) => {
-      let target = board.player.map.grid[corX][corY];
-      target.housesShip = true;
-      target.ship = board.player.ships[ship];
-    },
-
-    receiveAttack: (corX, corY) => {
-      const target = board.enemy.map.grid[corX][corY];
-      const trackerTarget = board.player.atk.grid[corX][corY];
-
-      if (board.enemy.map.tracker[target.cell] == true) return "cannot attack the cordinate twice";
-      board.enemy.map.tracker[target.cell] = true;
-      board.player.atk.tracker[target.cell] = true;
-      board.enemy.map.atkCors.push(target.cell);
-      board.player.atk.atkCors.push(target.cell);
-      board.enemy.map.totalAtks++;
-      board.player.atk.totalAtks++;
-      
-      if (!target.ship) {
-        board.player.atk.unsuccessfulAtks.push(target.cell);
-        return"no ships were hit"
-      };
-      board.player.atk.successfulAtks.push(target.cell);
-      target.ship.hit();
-      trackerTarget.housesShip = true;
-      return "a ship was hit.";
-    },
+    name,
+    map,
+    enemyMap,
+    placeShip,
+    receiveAttack
   };
 };
 
@@ -59,7 +35,6 @@ function createBoard () {
   const board = {
     grid: [],
     tracker: [],
-    atkCors: [],
     totalAtks: 0,
   };
 
@@ -68,8 +43,7 @@ function createBoard () {
     for (let j = 0; j < rows; j++) {
       let identifier = j+(i * columns);
       board.grid[i][j] = {
-        cell: identifier,
-        housesShip: false,
+        identifier,
         ship: null,
       };
       board.tracker[identifier] = false;
@@ -78,17 +52,5 @@ function createBoard () {
 
   return board;
 };
-
-function createShips () {
-  return {
-    carrier: Ship("carrier"),
-    battleship: Ship("battleship"),
-    destroyer: Ship("destroyer"),
-    submarine: Ship("submarine"),
-    patrolboat: Ship("patrolboat"),
-  };
-};
-
-function setBoard () {}
 
 export { Gameboard };

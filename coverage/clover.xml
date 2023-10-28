@@ -1,47 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1698434889814" clover="3.2.0">
-  <project timestamp="1698434889814" name="All files">
-    <metrics statements="42" coveredstatements="38" conditionals="10" coveredconditionals="7" methods="9" coveredmethods="8" elements="61" coveredelements="53" complexity="0" loc="42" ncloc="42" packages="2" files="2" classes="2"/>
+<coverage generated="1698506112148" clover="3.2.0">
+  <project timestamp="1698506112148" name="All files">
+    <metrics statements="28" coveredstatements="28" conditionals="10" coveredconditionals="6" methods="7" coveredmethods="7" elements="45" coveredelements="41" complexity="0" loc="28" ncloc="28" packages="2" files="2" classes="2"/>
     <package name="gameboard">
-      <metrics statements="36" coveredstatements="32" conditionals="4" coveredconditionals="3" methods="6" coveredmethods="5"/>
+      <metrics statements="22" coveredstatements="22" conditionals="4" coveredconditionals="2" methods="4" coveredmethods="4"/>
       <file name="gameboard.js" path="/home/mijan/web_dev/the_odin_project/fullstack_js/projects/javascript/battleship/src/modules/gameboard/gameboard.js">
-        <metrics statements="36" coveredstatements="32" conditionals="4" coveredconditionals="3" methods="6" coveredmethods="5"/>
+        <metrics statements="22" coveredstatements="22" conditionals="4" coveredconditionals="2" methods="4" coveredmethods="4"/>
         <line num="4" count="1" type="stmt"/>
-        <line num="19" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="11" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="19" count="1" type="cond" truecount="1" falsecount="1"/>
         <line num="20" count="1" type="stmt"/>
-        <line num="21" count="1" type="stmt"/>
-        <line num="22" count="1" type="stmt"/>
-        <line num="24" count="1" type="stmt"/>
-        <line num="27" count="1" type="stmt"/>
-        <line num="28" count="1" type="stmt"/>
-        <line num="29" count="1" type="stmt"/>
+        <line num="23" count="1" type="stmt"/>
         <line num="33" count="2" type="stmt"/>
         <line num="34" count="2" type="stmt"/>
-        <line num="36" count="2" type="cond" truecount="2" falsecount="0"/>
-        <line num="37" count="1" type="stmt"/>
-        <line num="38" count="1" type="stmt"/>
-        <line num="39" count="1" type="stmt"/>
-        <line num="40" count="1" type="stmt"/>
-        <line num="41" count="1" type="stmt"/>
-        <line num="42" count="1" type="stmt"/>
-        <line num="44" count="1" type="cond" truecount="1" falsecount="1"/>
-        <line num="45" count="1" type="stmt"/>
-        <line num="46" count="1" type="stmt"/>
-        <line num="48" count="0" type="stmt"/>
-        <line num="49" count="0" type="stmt"/>
-        <line num="50" count="0" type="stmt"/>
-        <line num="51" count="0" type="stmt"/>
-        <line num="57" count="4" type="stmt"/>
-        <line num="58" count="4" type="stmt"/>
-        <line num="59" count="4" type="stmt"/>
-        <line num="66" count="4" type="stmt"/>
-        <line num="67" count="40" type="stmt"/>
-        <line num="68" count="40" type="stmt"/>
-        <line num="69" count="400" type="stmt"/>
-        <line num="70" count="400" type="stmt"/>
-        <line num="75" count="400" type="stmt"/>
-        <line num="79" count="4" type="stmt"/>
-        <line num="83" count="2" type="stmt"/>
+        <line num="35" count="2" type="stmt"/>
+        <line num="41" count="2" type="stmt"/>
+        <line num="42" count="20" type="stmt"/>
+        <line num="43" count="20" type="stmt"/>
+        <line num="44" count="200" type="stmt"/>
+        <line num="45" count="200" type="stmt"/>
+        <line num="49" count="200" type="stmt"/>
+        <line num="53" count="2" type="stmt"/>
       </file>
     </package>
     <package name="ship">
@@ -49,10 +35,10 @@
       <file name="ship.js" path="/home/mijan/web_dev/the_odin_project/fullstack_js/projects/javascript/battleship/src/modules/ship/ship.js">
         <metrics statements="6" coveredstatements="6" conditionals="6" coveredconditionals="4" methods="3" coveredmethods="3"/>
         <line num="1" count="1" type="stmt"/>
-        <line num="10" count="12" type="cond" truecount="2" falsecount="0"/>
-        <line num="11" count="11" type="stmt"/>
-        <line num="18" count="11" type="stmt"/>
-        <line num="19" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="10" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="11" count="2" type="stmt"/>
+        <line num="18" count="2" type="stmt"/>
+        <line num="19" count="2" type="cond" truecount="1" falsecount="1"/>
         <line num="20" count="1" type="cond" truecount="1" falsecount="1"/>
       </file>
     </package>
