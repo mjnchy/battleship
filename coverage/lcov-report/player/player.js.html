@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>12/12</span>
+                <span class='fraction'>0/12</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>6/6</span>
+                <span class='fraction'>0/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>3/3</span>
+                <span class='fraction'>0/3</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>11/11</span>
+                <span class='fraction'>0/11</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line high'></div>
+    <div class='status-line low'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -94,24 +94,24 @@
 <a name='L29'></a><a href='#L29'>29</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -121,25 +121,25 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Gameboard } from "../gameboard/gameboard";
 &nbsp;
-function Player () {
-  let player1 = Gameboard("player1"),
-  player2 = Gameboard("player2"),
-  currentPlayer = player1;
+function <span class="fstat-no" title="function not covered" >Player </span>() {
+  let player1 = <span class="cstat-no" title="statement not covered" >Gameboard("player1"),</span>
+  player2 = <span class="cstat-no" title="statement not covered" >Gameboard("player2"),</span>
+  currentPlayer = <span class="cstat-no" title="statement not covered" >player1;</span>
 &nbsp;
-  function switchPlayer () {
-    currentPlayer = currentPlayer == player2? player1: player2;
+  function <span class="fstat-no" title="function not covered" >switchPlayer </span>() {
+<span class="cstat-no" title="statement not covered" >    currentPlayer = currentPlayer == player2? player1: player2;</span>
   };
 &nbsp;
-  function  attack (x, y) {
-    const enemy = currentPlayer == player1? player2: player1;
-    if (enemy.isAttacked(x, y)) return "Cannot attack the same cordinates twice.";
-    enemy.receiveAttack(x, y);
-    currentPlayer.enemyMap.tracker[enemy.map.grid[x][y].identifier] = true;
-    currentPlayer.enemyMap.totalAtks++;
-    switchPlayer();
+  function  <span class="fstat-no" title="function not covered" >attack </span>(x, y) {
+    const enemy = <span class="cstat-no" title="statement not covered" >currentPlayer == player1? player2: player1;</span>
+<span class="cstat-no" title="statement not covered" >    if (enemy.isAttacked(x, y)) <span class="cstat-no" title="statement not covered" >return "Cannot attack the same cordinates twice.";</span></span>
+<span class="cstat-no" title="statement not covered" >    enemy.receiveAttack(x, y);</span>
+<span class="cstat-no" title="statement not covered" >    currentPlayer.enemyMap.tracker[enemy.map.grid[x][y].identifier] = true;</span>
+<span class="cstat-no" title="statement not covered" >    currentPlayer.enemyMap.totalAtks++;</span>
+<span class="cstat-no" title="statement not covered" >    switchPlayer();</span>
   };
 &nbsp;
-  return {
+<span class="cstat-no" title="statement not covered" >  return {</span>
     player1,
     player2,
     attack
@@ -154,7 +154,7 @@ export { Player };
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-10-28T21:08:53.960Z
+                at 2023-11-01T19:44:16.241Z
             </div>
         <script src="../prettify.js"></script>
         <script>

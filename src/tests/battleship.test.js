@@ -17,10 +17,10 @@ test("tests gameboard and its methods", () => {
   gameBoard.receiveAttack(4, 5);
   expect(gameBoard.map.grid[4][5].ship).toBeTruthy();
   expect(gameBoard.map.totalAtks).toBe(1);
-  expect(gameBoard.map.tracker[45]).toBe(true);
+  expect(gameBoard.map.attacked[45]).toBe(true);
 });
 
-test("tests the player function", () => {
+test.only("tests the player function", () => {
   player.attack(4, 5);
   expect(player.player2.map.totalAtks).toBe(1);
   player.attack(4, 5);
