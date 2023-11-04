@@ -1,10 +1,10 @@
 import { Gameboard } from "../gameboard/gameboard.js";
 
-function Player (name, enemy) {
+function Player (name) {
   const player = Gameboard();
   return {
     name, ...player,
-    attack: (x, y) => {
+    attack: (enemy, x, y) => {
       const target = enemy.map.grid[x][y];
       if (target.isAttacked) return "Cannot attack the same cordinates twice";
       enemy.receiveAttack(x, y);
