@@ -2,7 +2,7 @@ import { Ship } from "../modules/ship/ship.js";
 import { Gameboard } from "../modules/gameboard/gameboard.js";
 import { Player } from "../modules/player/player.js";
 
-let player = Player();
+let player1 = Player("player1"), player2 = Player("player2", player1);
 
 test("tests if ship methods are working properly", () => {
   expect(() => {Ship("fail")}).toThrow();
@@ -21,9 +21,6 @@ test("tests gameboard and its methods", () => {
 });
 
 test.only("tests the player function", () => {
-  player.attack(4, 5);
-  expect(player.player2.map.totalAtks).toBe(1);
-  player.attack(4, 5);
-  expect(player.player1.map.totalAtks).toBe(1);
-  expect(player.attack(4, 5)).toBe("Cannot attack the same cordinates twice.");
+  player2.attack(4, 5);
+  expect(player1.map.attacked[player1.map.grid[4][5].identifier]).toBe(true);
 });

@@ -1,6 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1698867957489" clover="3.2.0">
-  <project timestamp="1698867957489" name="All files">
-    <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0" elements="0" coveredelements="0" complexity="0" loc="0" ncloc="0" packages="0" files="0" classes="0"/>
+<coverage generated="1699121075462" clover="3.2.0">
+  <project timestamp="1699121075463" name="All files">
+    <metrics statements="34" coveredstatements="26" conditionals="13" coveredconditionals="2" methods="10" coveredmethods="5" elements="57" coveredelements="33" complexity="0" loc="34" ncloc="34" packages="3" files="3" classes="3"/>
+    <package name="gameboard">
+      <metrics statements="21" coveredstatements="18" conditionals="4" coveredconditionals="1" methods="5" coveredmethods="3"/>
+      <file name="gameboard.js" path="/home/mijan/web_dev/the_odin_project/fullstack_js/projects/javascript/battleship/src/modules/gameboard/gameboard.js">
+        <metrics statements="21" coveredstatements="18" conditionals="4" coveredconditionals="1" methods="5" coveredmethods="3"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="8" count="2" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="14" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="19" count="1" type="stmt"/>
+        <line num="20" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="27" count="4" type="stmt"/>
+        <line num="28" count="4" type="stmt"/>
+        <line num="29" count="4" type="stmt"/>
+        <line num="31" count="4" type="stmt"/>
+        <line num="32" count="40" type="stmt"/>
+        <line num="33" count="40" type="stmt"/>
+        <line num="34" count="400" type="stmt"/>
+        <line num="35" count="400" type="stmt"/>
+        <line num="36" count="400" type="stmt"/>
+        <line num="40" count="4" type="stmt"/>
+      </file>
+    </package>
+    <package name="player">
+      <metrics statements="7" coveredstatements="7" conditionals="2" coveredconditionals="1" methods="2" coveredmethods="2"/>
+      <file name="player.js" path="/home/mijan/web_dev/the_odin_project/fullstack_js/projects/javascript/battleship/src/modules/player/player.js">
+        <metrics statements="7" coveredstatements="7" conditionals="2" coveredconditionals="1" methods="2" coveredmethods="2"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="ship">
+      <metrics statements="6" coveredstatements="1" conditionals="7" coveredconditionals="0" methods="3" coveredmethods="0"/>
+      <file name="ship.js" path="/home/mijan/web_dev/the_odin_project/fullstack_js/projects/javascript/battleship/src/modules/ship/ship.js">
+        <metrics statements="6" coveredstatements="1" conditionals="7" coveredconditionals="0" methods="3" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="10" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="19" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="20" count="0" type="cond" truecount="0" falsecount="2"/>
+      </file>
+    </package>
   </project>
 </coverage>

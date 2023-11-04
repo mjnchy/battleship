@@ -1,28 +1,17 @@
-import { Gameboard } from "../gameboard/gameboard";
+import { Gameboard } from "../gameboard/gameboard.js";
 
-// function Player () {
-//   let player1 = Gameboard("player1"),
-//   player2 = Gameboard("player2"),
-//   currentPlayer = player1;
-//
-//   function switchPlayer () {
-//     currentPlayer = currentPlayer == player2? player1: player2;
-//   };
-//
-//   function  attack (x, y) {
-//     const enemy = currentPlayer == player1? player2: player1;
-//     if (enemy.isAttacked(x, y)) return "Cannot attack the same cordinates twice.";
-//     enemy.receiveAttack(x, y);
-//     currentPlayer.enemyMap.tracker[enemy.map.grid[x][y].identifier] = true;
-//     currentPlayer.enemyMap.totalAtks++;
-//     switchPlayer();
-//   };
-//
-//   return {
-//     player1,
-//     player2,
-//     attack
-//   };
-// };
+function Player (name, enemy) {
+  const player = Gameboard();
+  return {
+    name, ...player,
+    attack: (x, y) => {
+      const target = enemy.map.grid[x][y];
+      if (target.isAttacked) return "Cannot attack the same cordinates twice";
+      enemy.receiveAttack(x, y);
+      player.enemyMap.attacked[target.identifier] = true;
+      player.enemyMap.totalAtks++;
+    },
+  };
+};
 
 export { Player };

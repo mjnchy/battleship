@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">87.5% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/12</span>
+                <span class='fraction'>7/8</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/6</span>
+                <span class='fraction'>1/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/3</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/11</span>
+                <span class='fraction'>7/7</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -80,69 +80,36 @@
 <a name='L15'></a><a href='#L15'>15</a>
 <a name='L16'></a><a href='#L16'>16</a>
 <a name='L17'></a><a href='#L17'>17</a>
-<a name='L18'></a><a href='#L18'>18</a>
-<a name='L19'></a><a href='#L19'>19</a>
-<a name='L20'></a><a href='#L20'>20</a>
-<a name='L21'></a><a href='#L21'>21</a>
-<a name='L22'></a><a href='#L22'>22</a>
-<a name='L23'></a><a href='#L23'>23</a>
-<a name='L24'></a><a href='#L24'>24</a>
-<a name='L25'></a><a href='#L25'>25</a>
-<a name='L26'></a><a href='#L26'>26</a>
-<a name='L27'></a><a href='#L27'>27</a>
-<a name='L28'></a><a href='#L28'>28</a>
-<a name='L29'></a><a href='#L29'>29</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L18'></a><a href='#L18'>18</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Gameboard } from "../gameboard/gameboard";
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Gameboard } from "../gameboard/gameboard.js";
 &nbsp;
-function <span class="fstat-no" title="function not covered" >Player </span>() {
-  let player1 = <span class="cstat-no" title="statement not covered" >Gameboard("player1"),</span>
-  player2 = <span class="cstat-no" title="statement not covered" >Gameboard("player2"),</span>
-  currentPlayer = <span class="cstat-no" title="statement not covered" >player1;</span>
-&nbsp;
-  function <span class="fstat-no" title="function not covered" >switchPlayer </span>() {
-<span class="cstat-no" title="statement not covered" >    currentPlayer = currentPlayer == player2? player1: player2;</span>
-  };
-&nbsp;
-  function  <span class="fstat-no" title="function not covered" >attack </span>(x, y) {
-    const enemy = <span class="cstat-no" title="statement not covered" >currentPlayer == player1? player2: player1;</span>
-<span class="cstat-no" title="statement not covered" >    if (enemy.isAttacked(x, y)) <span class="cstat-no" title="statement not covered" >return "Cannot attack the same cordinates twice.";</span></span>
-<span class="cstat-no" title="statement not covered" >    enemy.receiveAttack(x, y);</span>
-<span class="cstat-no" title="statement not covered" >    currentPlayer.enemyMap.tracker[enemy.map.grid[x][y].identifier] = true;</span>
-<span class="cstat-no" title="statement not covered" >    currentPlayer.enemyMap.totalAtks++;</span>
-<span class="cstat-no" title="statement not covered" >    switchPlayer();</span>
-  };
-&nbsp;
-<span class="cstat-no" title="statement not covered" >  return {</span>
-    player1,
-    player2,
-    attack
+function Player (name, enemy) {
+  const player = Gameboard();
+  return {
+    name, ...player,
+    attack: (x, y) =&gt; {
+      const target = enemy.map.grid[x][y];
+      <span class="missing-if-branch" title="if path not taken" >I</span>if (target.isAttacked) <span class="cstat-no" title="statement not covered" >return "Cannot attack the same cordinates twice";</span>
+      enemy.receiveAttack(x, y);
+      player.enemyMap.attacked[target.identifier] = true;
+      player.enemyMap.totalAtks++;
+    },
   };
 };
 &nbsp;
@@ -154,7 +121,7 @@ export { Player };
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-11-01T19:44:16.241Z
+                at 2023-11-04T18:04:35.451Z
             </div>
         <script src="../prettify.js"></script>
         <script>

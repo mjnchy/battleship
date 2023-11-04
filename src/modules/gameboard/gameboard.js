@@ -1,17 +1,17 @@
 import { Ship } from "../ship/ship.js";
 
-function Gameboard (name) {
+function Gameboard () {
   const map = createBoard(), enemyMap = createBoard();
   map.failed = [];
   enemyMap.success = [];
 
   return {
-    name, map, enemyMap,
+    map, enemyMap,
     isAttacked: (x, y) => map.attacked[map.grid[x][y].identifier],
     
     placeShip: (ship, x, y) => {
-      let target = map.grid[x][y]
-        target.ship? "Cannot place two ships at the same cordinates": target.ship = Ship(ship);
+      let target = map.grid[x][y];
+      target.ship? "Cannot place two ships at the same cordinates": target.ship = Ship(ship);
     },
 
     receiveAttack: (x, y) => {
