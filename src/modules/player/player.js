@@ -6,7 +6,7 @@ function Player (name) {
     name, ...player,
     attack: (enemy, x, y) => {
       const target = enemy.map.grid[x][y];
-      if (target.isAttacked) return "Cannot attack the same cordinates twice";
+      if (enemy.isAttacked(x, y)) return "Cannot attack the same cordinates twice";
       enemy.receiveAttack(x, y);
       player.enemyMap.attacked[target.identifier] = true;
       player.enemyMap.totalAtks++;

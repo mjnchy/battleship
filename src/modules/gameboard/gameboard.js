@@ -1,7 +1,7 @@
 import { Ship } from "../ship/ship.js";
 
 function Gameboard () {
-  const map = createBoard(), enemyMap = createBoard();
+  const map = createBoard(), enemyMap = createBoard(), ships = [];
   map.failed = [];
   enemyMap.success = [];
 
@@ -9,9 +9,12 @@ function Gameboard () {
     map, enemyMap,
     isAttacked: (x, y) => map.attacked[map.grid[x][y].identifier],
     
+    allShipsSunk: () => ships.every(ship => ship.isSunk()),
+
     placeShip: (ship, x, y) => {
-      let target = map.grid[x][y];
-      target.ship? "Cannot place two ships at the same cordinates": target.ship = Ship(ship);
+      const target = map.grid[x][y], newShip = Ship(ship);
+      target.ship? "Cannot place two ships at the same cordinates": target.ship = newShip;
+      ships.push(newShip);
     },
 
     receiveAttack: (x, y) => {
