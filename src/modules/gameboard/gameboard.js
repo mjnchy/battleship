@@ -11,9 +11,22 @@ function Gameboard () {
     
     allShipsSunk: () => ships.every(ship => ship.isSunk()),
 
-    placeShip: (ship, x, y) => {
+    placeShip: (ship, x, y, orientation = "vertical") => {
       const target = map.grid[x][y], newShip = Ship(ship);
-      target.ship? "Cannot place two ships at the same cordinates": target.ship = newShip;
+      if (target.ship) return "Cannot place two ships at the same cordinate.";
+      if (!newShip.length > 1) target.ship = newShip;
+
+      const arr = [],
+      halfLength = Math.floor(newShip.length/2),
+      start = orientation == "vertical"? x - halfLength: y - halfLength; 
+      
+      for (let i = start; i < start + newShip.length; i++) {
+        arr.push(orientation == "vertical"? [i, y]: [x, i])
+      }
+
+      arr.forEach(newCor => {
+        map.grid[newCor[0]][newCor[1]].ship = newShip;
+      });
       ships.push(newShip);
     },
 
@@ -31,10 +44,10 @@ function createBoard () {
   columns = 10,
   board = { grid: [], attacked: [], totalAtks: 0 };
 
-  for (let i = 0; i < columns; i++) {
+  for (let i = 0; i < rows; i++) {
     board.grid[i] = [];
-    for (let j = 0; j < rows; j++) {
-      const identifier = j+(i * columns);
+    for (let j = 0; j < columns; j++) {
+      const identifier = j+(i * rows);
       board.grid[i][j] = { identifier, ship: null };
       board.attacked[identifier] = false;
     }

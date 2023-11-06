@@ -15,7 +15,7 @@ function Ship (name, length = shipLength) {
     sunk: false,
   };
 
-  return {
+  return { name, length: ship.length,
     hit: () => ship.hitCount < ship.length? ++ship.hitCount: null,
     isSunk: () => ship.hitCount == ship.length? ship.sunk = true: false,
   };
