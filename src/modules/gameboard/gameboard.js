@@ -15,7 +15,8 @@ function Gameboard () {
       const target = map.grid[x][y], newShip = Ship(ship);
       if (target.ship) return "Cannot place two ships at the same cordinate.";
       if (!newShip.length > 1) target.ship = newShip;
-
+      if (orientation != "vertical" && orientation != "horizontal") return "Invalid orientation. Ships can only be placed either horizontally or vertically."
+      
       const arr = [],
       halfLength = Math.floor(newShip.length/2),
       start = orientation == "vertical"? x - halfLength: y - halfLength; 
