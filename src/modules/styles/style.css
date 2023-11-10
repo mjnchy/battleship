@@ -1,0 +1,33 @@
+body {
+  background: black;
+}
+
+#gameboard-container {
+  width: 80vw;
+  height: 60vh;
+  display: flex;
+  justify-content: space-evenly;
+  margin: 12.5% auto;
+}
+
+.board {
+  display: grid;
+  grid-template: repeat(10, 1fr)/ repeat(10, 1fr);
+  margin: auto 25px;
+}
+
+#player-map {
+  width: clamp(480px, 40%, 620px);
+  height: clamp(480px, 85%, 620px);
+}
+
+#enemy-map {
+  width: clamp(200px, 40%, 360px);
+  height: clamp(200px, 85%, 360px);
+}
+
+.cell {
+  background: orange;
+  border: 1px solid black;
+  padding: 5px;
+}
