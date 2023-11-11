@@ -1,5 +1,13 @@
+:root {
+  --mantle: #181825;
+  --mauve: #cba6f7;
+  --maroon: #eba0ac;
+  --red: #f38ba8;
+}
+
 body {
-  background: black;
+  background: var(--mantle);
+  overflow: hidden;
 }
 
 #gameboard-container {
@@ -14,20 +22,32 @@ body {
   display: grid;
   grid-template: repeat(10, 1fr)/ repeat(10, 1fr);
   margin: auto 25px;
+  border-radius: 10px;
+  overflow: hidden;
 }
 
 #player-map {
   width: clamp(480px, 40%, 620px);
-  height: clamp(480px, 85%, 620px);
+  height: clamp(480px, 65%, 620px);
+  border: 1px solid var(--mauve);
 }
 
 #enemy-map {
-  width: clamp(200px, 40%, 360px);
-  height: clamp(200px, 85%, 360px);
+  margin-top: 0;
+  width: clamp(200px, 40%, 340px);
+  height: clamp(200px, 85%, 340px);
+  border: 1px solid var(--maroon);
 }
 
 .cell {
-  background: orange;
-  border: 1px solid black;
+  background: transparent;
   padding: 5px;
+}
+
+#player-map > .cell {
+  border: 1px solid var(--mauve);
+}
+
+#enemy-map > .cell {
+  border: 1px solid var(--maroon);
 }

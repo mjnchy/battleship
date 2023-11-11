@@ -1,3 +1,11 @@
-import "./modules/player/player.js";
-import "./modules/DOM/dom.js";
 import "./modules/styles/styles.js";
+import { Player } from "./modules/player/player.js";
+import { drawBoards } from "./modules/DOM/dom.js";
+
+
+window.onload = () => {
+  const player1 = Player("player1");
+  const player2 = Player("player2");
+  
+  drawBoards([[player1.map.grid, "player-map"], [player1.enemyMap.grid, "enemy-map"]]);
+};
