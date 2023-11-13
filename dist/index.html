@@ -1,13 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title></title>
+    <title>Battleship</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
     <div id="wrapper">
-      <div id="gameboard-container"></div>
+      <h1 id="title-header">Battleship</h1>
+      <div id="container">  
+        <div id="gameboard-container"></div>
+        <div id="stats-container">
+          <div class="stats-board" id="player-stats">
+            <h2 class="fleet-header", id="player-fleet-header">Your Fleet</h2>
+            <div class="ship-stats" id="player-carrier-stats"></div>
+            <div class="ship-stats" id="player-battleship-stats"></div>
+            <div class="ship-stats" id="player-destroyer-stats"></div>
+            <div class="ship-stats" id="player-submarine-stats"></div>
+            <div class="ship-stats" id="player-patrolboat-stats"></div>
+          </div>
+          <div class="stats-board" id="enemy-stats">
+            <h2 class="fleet-header", id="enemy-fleet-header">Enemy Fleet</h2>
+            <div class="ship-stats" id="enemy-carrier-stats"></div>
+            <div class="ship-stats" id="enemy-battleship-stats"></div>
+            <div class="ship-stats" id="enemy-destroyer-stats"></div>
+            <div class="ship-stats" id="enemy-submarine-stats"></div>
+            <div class="ship-stats" id="enemy-patrolboat-stats"></div>
+          </div>
+        </div>
+      </div>
     </div>
     <script src="./main.js"></script>
   </body>
