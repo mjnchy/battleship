@@ -11,7 +11,7 @@
       <div id="container">  
         <div id="gameboard-container"></div>
         <div id="stats-container">
-          <div class="stats-board" id="player-stats">
+          <div class="stats-board" id="player-stats" data-active="false">
             <h2 class="fleet-header", id="player-fleet-header">Your Fleet</h2>
             <div class="ship-stats" id="player-carrier-stats"></div>
             <div class="ship-stats" id="player-battleship-stats"></div>
@@ -19,13 +19,38 @@
             <div class="ship-stats" id="player-submarine-stats"></div>
             <div class="ship-stats" id="player-patrolboat-stats"></div>
           </div>
-          <div class="stats-board" id="enemy-stats">
+          <div class="stats-board" id="enemy-stats" data-active="false">
             <h2 class="fleet-header", id="enemy-fleet-header">Enemy Fleet</h2>
             <div class="ship-stats" id="enemy-carrier-stats"></div>
             <div class="ship-stats" id="enemy-battleship-stats"></div>
             <div class="ship-stats" id="enemy-destroyer-stats"></div>
             <div class="ship-stats" id="enemy-submarine-stats"></div>
             <div class="ship-stats" id="enemy-patrolboat-stats"></div>
+          </div>
+
+          <div id="ship-placement-overlay" data-active="true">
+            <h2 id="ship-overlay-header">Place Your Ships:</h2>
+            <div id="ship-overlay-ship-container">
+              <div class="overlay-ship" id="overlay-carrier">
+                <p class="overlay-ship-text" id="overlay-carrier-text">Carrier:</p>
+              </div>
+
+              <div class="overlay-ship" id="overlay-battleship">
+                <p class="overlay-ship-text" id="overlay-battleship-text">Battleship:</p>
+              </div>
+
+              <div class="overlay-ship" id="overlay-carrier">
+                <p class="overlay-ship-text" id="overlay-carrier-text">Destroyer:</p>
+              </div>
+
+              <div class="overlay-ship" id="overlay-destroyer">
+                <p class="overlay-ship-text" id="overlay-destroyer-text">Submarine:</p>
+              </div>
+
+              <div class="overlay-ship" id="overlay-carrier">
+                <p class="overlay-ship-text" id="overlay-carrier-text">Patrolboat:</p>
+              </div>  
+            </div>
           </div>
         </div>
       </div>

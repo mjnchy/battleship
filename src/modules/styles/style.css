@@ -11,7 +11,7 @@
 body {
   background: var(--mantle);
   color: var(--text);
-  /* overflow: hidden; */
+  overflow: hidden;
 }
 
 h1 {
@@ -47,6 +47,7 @@ h1 {
   flex-direction: column;
   gap: 30px;
   margin: auto;
+  position: relative;
 }
 
 .board {
@@ -80,16 +81,59 @@ h1 {
   border: 1px solid var(--maroon);
 }
 
-
 .stats-board {
   background-color: var(--overlay1);
   width: 75%;
   height: 49%;
   margin-left: auto;
   border-radius: 10px;
+  transition: all, 250ms;
+}
+
+#player-stats[data-active="false"] {
+  transform: translateY(-500%);
+}
+
+#enemy-stats[data-active="false"] {
+  transform: translateY(500%);
 }
 
 .fleet-header {
   font-size: 2rem;
   text-align: center;
+}
+
+#ship-placement-overlay {
+  position: absolute;
+  right: -45px;
+  width: clamp(345px, calc(100% + 45px), 545px);
+  height: 700px;
+  margin: auto;
+  border-radius: 10px 0 0 10px;
+  background: var(--overlay1);
+  text-align: center;
+  transition: all, 250ms;
+}
+
+#ship-placement-overlay[data-active="false"] {
+  transform: translateX(500%);
+}
+
+#ship-overlay-header {
+  font-size: 3.5rem;
+}
+
+#ship-overlay-ship-container {
+  height: calc(75% - 100px);
+  padding: 25% 0;
+}
+
+.overlay-ship {
+  margin: auto 25px;
+  line-height: 2;
+}
+
+.overlay-ship-text {
+  font-size: 2rem;
+  text-align: left;
 }

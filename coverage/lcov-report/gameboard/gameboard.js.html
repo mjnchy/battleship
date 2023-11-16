@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">77.5% </span>
+                <span class="strong">88.09% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>31/40</span>
+                <span class='fraction'>37/42</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">45.45% </span>
+                <span class="strong">53.33% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>5/11</span>
+                <span class='fraction'>8/15</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">75% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>4/8</span>
+                <span class='fraction'>6/8</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">80.64% </span>
+                <span class="strong">96.87% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>25/31</span>
+                <span class='fraction'>31/32</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -122,7 +122,8 @@
 <a name='L57'></a><a href='#L57'>57</a>
 <a name='L58'></a><a href='#L58'>58</a>
 <a name='L59'></a><a href='#L59'>59</a>
-<a name='L60'></a><a href='#L60'>60</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
@@ -131,34 +132,35 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -190,7 +192,7 @@ function Gameboard () {
 &nbsp;
   return {
     map, enemyMap,
-    isAttacked: <span class="fstat-no" title="function not covered" >(x</span>, y) =&gt; <span class="cstat-no" title="statement not covered" >map.attacked[map.grid[x][y].identifier],</span>
+    isAttacked: (x, y) =&gt; map.attacked[map.grid[x][y].identifier],
     
     allShipsSunk: <span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >ships.every(<span class="fstat-no" title="function not covered" >sh</span>ip =&gt; <span class="cstat-no" title="statement not covered" >ship.isSunk())</span>,</span>
 &nbsp;
@@ -198,7 +200,8 @@ function Gameboard () {
       const target = map.grid[x][y], newShip = Ship(ship);
       <span class="missing-if-branch" title="if path not taken" >I</span>if (target.ship) <span class="cstat-no" title="statement not covered" >return "Cannot place two ships at the same cordinate.";</span>
       <span class="missing-if-branch" title="if path not taken" >I</span>if (!newShip.length &gt; 1) <span class="cstat-no" title="statement not covered" >target.ship = newShip;</span>
-&nbsp;
+      <span class="missing-if-branch" title="if path not taken" >I</span>if (orientation != "vertical" &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >orientation != "horizontal")</span> <span class="cstat-no" title="statement not covered" >return "Invalid orientation. Ships can only be placed either horizontally or vertically."</span>
+      
       const arr = [],
       halfLength = Math.floor(newShip.length/2),
       start = orientation == "vertical"? x - halfLength: <span class="branch-1 cbranch-no" title="branch not covered" >y - halfLength; </span>
@@ -213,11 +216,11 @@ function Gameboard () {
       ships.push(newShip);
     },
 &nbsp;
-    receiveAttack: <span class="fstat-no" title="function not covered" >(x</span>, y) =&gt; {
-      const target = <span class="cstat-no" title="statement not covered" >map.grid[x][y];</span>
-<span class="cstat-no" title="statement not covered" >      map.attacked[target.identifier] = true;</span>
-<span class="cstat-no" title="statement not covered" >      target.ship? target.ship.hit(): map.failed.push([x, y]);</span>
-<span class="cstat-no" title="statement not covered" >      map.totalAtks++;</span>
+    receiveAttack: (x, y) =&gt; {
+      const target = map.grid[x][y];
+      map.attacked[target.identifier] = true;
+      target.ship? target.ship.hit(): <span class="branch-1 cbranch-no" title="branch not covered" >map.failed.push([x, y]);</span>
+      map.totalAtks++;
     },
   };
 };
@@ -247,7 +250,7 @@ export { Gameboard };
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-11-06T18:12:21.446Z
+                at 2023-11-15T22:46:25.578Z
             </div>
         <script src="../prettify.js"></script>
         <script>
