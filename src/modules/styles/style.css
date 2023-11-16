@@ -127,12 +127,16 @@ h1 {
   font-size: 3.6rem;
 }
 
-#ship-axis-header {
+#ship-axis-div {
   font-size: 1.8rem;
+  font-weight: 700;
   margin: 2em 0 0;
 }
 
-#axis-btn {
+#axis-drop-down {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
   color: var(--text);
   background-color: #313244;
   border: 1px solid var(--red);
@@ -142,10 +146,15 @@ h1 {
   transition: all, 250ms;
 }
 
-#axis-btn:hover {
+#axis-drop-down:hover {
   background-color: var(--background-highlight);
   cursor: pointer;
   scale: 1.1;
+}
+
+#axis-drop-down option {
+  background-color: var(--overlay1);
+  padding: 25px;
 }
 
 #ship-overlay-ship-container {

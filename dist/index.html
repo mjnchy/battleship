@@ -30,7 +30,15 @@
 
           <div id="ship-placement-overlay" data-active="true">
             <h2 id="ship-overlay-header">Place Your Ships</h2>
-            <h4 id="ship-axis-header">Axis: <button type="button" id="axis-btn" data-param="horizontal">Horizontal</button></h4> 
+            
+            <div id="ship-axis-div">
+              <label for="axis-drop-down" id="ship-axis-header">Axis:</label>
+              <select name="orientation" id="axis-drop-down">
+                <option value="horizontal">Horizontal</option>
+                <option value="vertical">Vertical</option>
+              </select>  
+            </div>
+
             <div id="ship-overlay-ship-container">
               <div class="overlay-ship" id="overlay-carrier">
                 <p class="overlay-ship-text" id="overlay-carrier-text">Carrier:</p>
