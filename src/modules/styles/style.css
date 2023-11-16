@@ -5,6 +5,7 @@
   --red: #f38ba8;
   --text: #cdd6f4;
   --overlay1: #222235;
+  --background-highlight: #42445e;
   font-size: 10px;
 }
 
@@ -106,8 +107,11 @@ h1 {
 #ship-placement-overlay {
   position: absolute;
   right: -45px;
-  width: clamp(345px, calc(100% + 45px), 545px);
-  height: 700px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  width: clamp(390px, calc(100% + 45px), 590px);
+  height: 800px;
   margin: auto;
   border-radius: 10px 0 0 10px;
   background: var(--overlay1);
@@ -120,20 +124,53 @@ h1 {
 }
 
 #ship-overlay-header {
-  font-size: 3.5rem;
+  font-size: 3.6rem;
+}
+
+#ship-axis-header {
+  font-size: 1.8rem;
+  margin: 2em 0 0;
+}
+
+#axis-btn {
+  color: var(--text);
+  background-color: #313244;
+  border: 1px solid var(--red);
+  border-radius: 10px;
+  padding: 10px;
+  margin-left: 10px;
+  transition: all, 250ms;
+}
+
+#axis-btn:hover {
+  background-color: var(--background-highlight);
+  cursor: pointer;
+  scale: 1.1;
 }
 
 #ship-overlay-ship-container {
-  height: calc(75% - 100px);
-  padding: 25% 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto 10px;
 }
 
 .overlay-ship {
+  width: 90%;
   margin: auto 25px;
-  line-height: 2;
+  display: flex;
+  gap: 5px;
 }
 
 .overlay-ship-text {
   font-size: 2rem;
   text-align: left;
+  flex-basis: 25%;
+}
+
+.temp-ship-img {
+  width: 100%;
+  background: white;
+  flex-basis: 75%;
 }
