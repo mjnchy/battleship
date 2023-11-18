@@ -5,8 +5,13 @@
   --red: #f38ba8;
   --text: #cdd6f4;
   --overlay1: #222235;
+  --overlay2: #313244;
   --background-highlight: #42445e;
   font-size: 10px;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 body {
@@ -128,34 +133,75 @@ h1 {
 }
 
 #ship-axis-div {
+  width: fit-content;
+  display: flex;
+  gap: 15px;
+  align-items: center;
   font-size: 1.8rem;
   font-weight: 700;
-  margin: 2em 0 0;
+  margin: 1.5em auto 1em;
 }
 
-#axis-drop-down {
-  appearance: none;
-  -moz-appearance: none;
-  -webkit-appearance: none;
+#axis-drop-down-container {
+  position: relative;
+}
+
+#axis-selected {
+  width: 100px;
   color: var(--text);
-  background-color: #313244;
+  background-color: var(--overlay2);
   border: 1px solid var(--red);
   border-radius: 10px;
   padding: 10px;
-  margin-left: 10px;
   transition: all, 250ms;
 }
 
-#axis-drop-down:hover {
+#axis-selected:hover {
+  scale: 1.1;
   background-color: var(--background-highlight);
   cursor: pointer;
-  scale: 1.1;
 }
 
-#axis-drop-down option {
-  background-color: var(--overlay1);
-  padding: 25px;
+#axis-drop-down-list {
+  width: 100px;
+  position: absolute;
+  top: -21px;
+  list-style: none;
+  text-align: center;
+  padding: 0;
+  border: 1px solid var(--red);
+  border-top: none;
+  border-radius: 0 0 10px 10px;
+  transition: all, 250ms;
+  opacity: 0;
+  pointer-events: none;
 }
+
+#axis-drop-down-list[data-expanded="true"] {
+  transform: translateY(40px);
+  opacity: 100;
+  pointer-events: all;
+}
+
+.axis-drop-down-item {
+  font-weight: 400;
+  padding: 5px 0;
+}
+
+.axis-drop-down-item:hover {
+  background-color: var(--background-highlight);
+  cursor: pointer;
+}
+
+.axis-drop-down-item:nth-of-type(1) {
+  border-bottom: 1px solid var(--red);
+}
+
+.axis-drop-down-item:nth-of-type(2) {
+  border-radius: 0 0 10px 10px;
+}
+
+
 
 #ship-overlay-ship-container {
   height: 100%;
