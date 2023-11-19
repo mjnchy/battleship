@@ -6,19 +6,8 @@ const domElems = Object.freeze({
 });
 
 function toggleAxisList () { 
-  if (document.activeElement == domElems.axisSelected && domElems.axisList.dataset.expanded == "true") domElems.axisSelected.blur();
-  domElems.axisList.dataset.expanded = domElems.axisList.dataset.expanded == "true"? false: "true";
-
-  // axisOptions.forEach(option => {
-  //   option.addEventListener("click", e => {
-  //     e.target.classList.add('current');
-  //     const otherOption = e.target.nextElementSibling? e.target.nextElementSibling: e.target.previousElementSibling;
-  //     otherOption.classList.remove("current");
-  //     axisSelected.dataset.value = e.target.dataset.value;
-  //     axisSelected.textContent = e.target.textContent;
-  //     axisList.dataset.expanded = false;
-  //   })
-  // });
+  domElems.axisList.dataset.expanded == "true"? domElems.axisSelected.blur(): null;
+  domElems.axisList.dataset.expanded = domElems.axisList.dataset.expanded == "true"? "false": "true";
 };
 
 function selectShipAxis (element) {
@@ -35,6 +24,11 @@ function interact () {
   window.addEventListener("click", e => {
     const target = e.target;
 
+    // if (domElems.axisList.dataset.expanded == "true") {
+    //   if (target == domElems.axisOption1 || target == domElems.axisOption2) null
+    //   else domElems.axisList.dataset.expanded = "false";
+    // }
+
     switch (target) {
       case domElems.axisSelected:
         toggleAxisList(); 
@@ -47,10 +41,6 @@ function interact () {
       case domElems.axisOption2:
         selectShipAxis(target);
         break;
-    };
-
-    if (document.activeElement == domElems.axisSelected && target != domElems.axisSelected || domElems.axisOption1 || domElems.axisOption2) {
-      console.log('okay');
     };
   });
 };
