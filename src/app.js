@@ -1,7 +1,7 @@
 import "./modules/styles/styles.js";
 import { Player } from "./modules/player/player.js";
 import { drawBoards } from "./modules/DOM/dom.js";
-
+import { interact, toggleAxis } from "./modules/DOM/interaction.js";
 
 window.onload = () => {
   const player1 = Player("player1");
@@ -9,3 +9,5 @@ window.onload = () => {
   
   drawBoards([[player1.map.grid, "player-map"], [player1.enemyMap.grid, "enemy-map"]]);
 };
+
+interact();

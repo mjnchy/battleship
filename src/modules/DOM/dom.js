@@ -1,7 +1,3 @@
-function shipOverlay () {
-
-};
-
 function drawBoards (arr) {
   if (!Array.isArray(arr)) throw new Error("makeBoards can only accept an array parameter. Parameter type is not an array.");
   if (arr.length != 2) throw new Error("Array parameter can only take a maximum of two items.");
