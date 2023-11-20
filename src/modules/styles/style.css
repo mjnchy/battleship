@@ -185,7 +185,7 @@ h1 {
   pointer-events: none;
 }
 
-#axis-drop-down-list[data-expanded="true"] {
+#axis-drop-down-list.expanded {
   height: fit-content;
   transform: translateY(15px);
   opacity: 100;

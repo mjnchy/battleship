@@ -5,41 +5,42 @@ const domElems = Object.freeze({
   axisOption2: document.querySelector(".axis-drop-down-item:nth-of-type(2)"),
 });
 
-function toggleAxisList () { 
-  domElems.axisList.dataset.expanded == "true"? domElems.axisSelected.blur(): null;
-  domElems.axisList.dataset.expanded = domElems.axisList.dataset.expanded == "true"? "false": "true";
+function toggleAxisMenu () { 
+  domElems.axisList.classList.contains("expanded")? domElems.axisSelected.blur(): null;
+  domElems.axisList.classList.toggle("expanded");
 };
 
-function selectShipAxis (element) {
+function externalMenuCollapse (element) {
+  if (element != domElems.axisSelected && element != domElems.axisOption1 && element != domElems.axisOption2)
+  domElems.axisList.classList.toggle("expanded");
+};
+
+function selectAxis (element) {
   const otherOption = element.nextElementSibling? element.nextElementSibling: element.previousElementSibling;
   element.classList.add("current");
   otherOption.classList.remove("current");
   
   domElems.axisSelected.dataset.value = element.dataset.value;
   domElems.axisSelected.textContent = element.textContent;
-  domElems.axisList.dataset.expanded = false;
+  domElems.axisList.classList.toggle("expanded");
 };
 
 function interact () {
   window.addEventListener("click", e => {
     const target = e.target;
-
-    // if (domElems.axisList.dataset.expanded == "true") {
-    //   if (target == domElems.axisOption1 || target == domElems.axisOption2) null
-    //   else domElems.axisList.dataset.expanded = "false";
-    // }
+    if (domElems.axisList.classList.contains("expanded")) externalMenuCollapse(target);
 
     switch (target) {
       case domElems.axisSelected:
-        toggleAxisList(); 
+        toggleAxisMenu(); 
         break;
 
       case domElems.axisOption1:
-        selectShipAxis(target);
+        selectAxis(target);
         break;
 
       case domElems.axisOption2:
-        selectShipAxis(target);
+        selectAxis(target);
         break;
     };
   });
