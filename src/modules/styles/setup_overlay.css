@@ -1,20 +1,24 @@
 #ship-placement-overlay {
+  width: clamp(390px, calc(100% + 45px), 590px);
+  height: 800px;
   position: absolute;
-  right: -45px;
+  right: -555px;
   display: flex;
   flex-direction: column;
   gap: 25px;
-  width: clamp(390px, calc(100% + 45px), 590px);
-  height: 800px;
+  visibility: hidden;
+  opacity: 0;
   margin: auto;
   border-radius: 10px 0 0 10px;
   background: var(--overlay1);
   text-align: center;
-  transition: all, 250ms;
+  transition: all, 2s;
 }
 
-#ship-placement-overlay.hidden {
-  transform: translateX(500%);
+#ship-placement-overlay.visible {
+  transform: translateX(-520px);
+  opacity: 1;
+  visibility: visible;
 }
 
 #ship-overlay-header {

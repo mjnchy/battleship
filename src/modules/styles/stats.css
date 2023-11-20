@@ -6,38 +6,6 @@
   margin: auto;
   position: relative;
 }
-
-.board {
-  width: clamp(380px, 40%, 520px);
-  height: clamp(380px, 65%, 520px);
-  display: grid;
-  grid-template: repeat(10, 1fr)/ repeat(10, 1fr);
-  margin: auto 25px;
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-#player-map {
-  border: 1px solid var(--mauve);
-}
-
-#enemy-map {
-  border: 1px solid var(--maroon);
-}
-
-.cell {
-  background: transparent;
-  padding: 5px;
-}
-
-#player-map > .cell {
-  border: 1px solid var(--mauve);
-}
-
-#enemy-map > .cell {
-  border: 1px solid var(--maroon);
-}
-
 .stats-board {
   background-color: var(--overlay1);
   width: 75%;

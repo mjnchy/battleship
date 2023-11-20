@@ -34,3 +34,26 @@ h1 {
   height: 70%;
   margin: clamp(50px, 5%, 100px) auto 50px 10px;
 }
+
+.board {
+  width: clamp(380px, 40%, 520px);
+  height: clamp(380px, 65%, 520px);
+  display: grid;
+  grid-template: repeat(10, 1fr)/ repeat(10, 1fr);
+  margin: auto 25px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+#player-map, #player-map > .cell {
+  border: 1px solid var(--mauve);
+}
+
+#enemy-map, #enemy-map > .cell {
+  border: 1px solid var(--maroon);
+}
+
+.cell {
+  background: transparent;
+  padding: 5px;
+}

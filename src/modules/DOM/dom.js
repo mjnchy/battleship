@@ -1,9 +1,6 @@
 const domElems = Object.freeze({
   gameBoardContainer: document.querySelector("#gameboard-container"),
-  axisSelected: document.querySelector("#axis-selected"),
-  axisList: document.querySelector("#axis-drop-down-list"),
-  axisOption1: document.querySelector(".axis-drop-down-item"),
-  axisOption2: document.querySelector(".axis-drop-down-item:nth-of-type(2)"),
+  setupOverlay: document.querySelector("#ship-placement-overlay"),
 });
 
 function drawBoards (arr) {
@@ -29,4 +26,8 @@ function drawBoards (arr) {
   });
 };
 
-export {domElems, drawBoards };
+function setupPrompt () {
+  domElems.setupOverlay.classList.toggle("visible");
+};
+
+export { drawBoards, setupPrompt };
