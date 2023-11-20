@@ -25,6 +25,10 @@ function selectAxis (element) {
   interactElems.axisList.classList.toggle("expanded");
 };
 
+function showShips () {
+
+};
+
 function interact () {
   window.addEventListener("click", e => {
     const target = e.target;
@@ -44,6 +48,10 @@ function interact () {
         break;
     };
   });
+
+  // document.querySelector("#player-map").addEventListener("click", e => {
+  //   getCordinates(e.target.dataset.identifier);
+  // });
 };
 
 export { interact };
