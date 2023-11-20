@@ -1,9 +1,4 @@
-const domElems = Object.freeze({
-  axisSelected: document.querySelector("#axis-selected"),
-  axisList: document.querySelector("#axis-drop-down-list"),
-  axisOption1: document.querySelector(".axis-drop-down-item"),
-  axisOption2: document.querySelector(".axis-drop-down-item:nth-of-type(2)"),
-});
+import { domElems } from "./dom";
 
 function toggleAxisMenu () { 
   domElems.axisList.classList.contains("expanded")? domElems.axisSelected.blur(): null;

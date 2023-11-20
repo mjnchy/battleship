@@ -1,3 +1,11 @@
+const domElems = Object.freeze({
+  gameBoardContainer: document.querySelector("#gameboard-container"),
+  axisSelected: document.querySelector("#axis-selected"),
+  axisList: document.querySelector("#axis-drop-down-list"),
+  axisOption1: document.querySelector(".axis-drop-down-item"),
+  axisOption2: document.querySelector(".axis-drop-down-item:nth-of-type(2)"),
+});
+
 function drawBoards (arr) {
   if (!Array.isArray(arr)) throw new Error("makeBoards can only accept an array parameter. Parameter type is not an array.");
   if (arr.length != 2) throw new Error("Array parameter can only take a maximum of two items.");
@@ -17,8 +25,8 @@ function drawBoards (arr) {
       });
     });
 
-    document.querySelector("#gameboard-container").append(newBoard);
+    domElems.gameBoardContainer.append(newBoard);
   });
 };
 
-export { drawBoards };
+export {domElems, drawBoards };
