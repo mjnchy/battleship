@@ -12,7 +12,7 @@ function Player (name) {
       player.enemyMap.totalAtks++;
     },
 
-    getCordinates: (identifier) => identifier < 10? [0, parseInt(identifier)]: identifier.split("").map(Number),
+    getCordinates: (identifier) => [Math.floor(identifier/10), identifier%10],
   };
 };
 
