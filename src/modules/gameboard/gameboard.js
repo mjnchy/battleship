@@ -51,6 +51,7 @@ function createBoard () {
       const identifier = j+(i * rows);
       board.grid[i][j] = { identifier, ship: null };
       board.attacked[identifier] = false;
+      // if (i == 0 || i == 9 || j == 0 || j == 9) board.grid[i][j].edge = true;
     }
   }
 

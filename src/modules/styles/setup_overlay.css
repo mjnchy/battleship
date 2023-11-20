@@ -39,27 +39,6 @@
   position: relative;
 }
 
-#axis-selected {
-  width: 100px;
-  color: var(--text);
-  background-color: var(--overlay2);
-  border: 1px solid var(--red);
-  border-radius: 10px;
-  padding: 10px;
-  outline: none;
-  transition: all, 250ms;
-}
-
-#axis-selected:hover  {
-  scale: 1.1;
-  background-color: var(--background-highlight);
-  cursor: pointer;
-}
-
-#axis-selected:focus {
-  scale: 1.1;
-}
-
 #axis-drop-down-list {
   height: 0;
   width: 100px;
@@ -134,4 +113,8 @@
   width: 100%;
   background: white;
   flex-basis: 75%;
+}
+
+#placer-btn {
+  margin: auto auto 25px;
 }

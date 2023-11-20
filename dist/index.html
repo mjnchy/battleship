@@ -29,12 +29,11 @@
           </div>
 
           <div id="ship-placement-overlay">
-            <h2 id="ship-overlay-header">Place Your Ships</h2>
-            
+            <h2 id="ship-overlay-header">Place Your Ships</h2>            
             <div id="ship-axis-div">
               <h4 id="ship-axis-header">Axis:</h4>
               <div id="axis-drop-down-container">
-                <button data-value="horizontal" id="axis-selected">Horizontal</button>
+                <button data-value="horizontal" class="btn" id="axis-selected">Horizontal</button>
                 <ul id="axis-drop-down-list">
                   <li class="axis-drop-down-item current" data-value="horizontal">Horizontal</li>
                   <li class="axis-drop-down-item" data-value="vertical">Vertical</li>
@@ -45,29 +44,30 @@
             <div id="ship-overlay-ship-container">
               <div class="overlay-ship" id="overlay-carrier">
                 <p class="overlay-ship-text" id="overlay-carrier-text">Carrier:</p>
-                <span class="temp-ship-img"></span>
+                <span class="temp-ship-img" draggable="true"></span>
               </div>
 
               <div class="overlay-ship" id="overlay-battleship">
                 <p class="overlay-ship-text" id="overlay-battleship-text">Battleship:</p>
-                <span class="temp-ship-img"></span>
+                <span class="temp-ship-img" draggable="true"></span>
               </div>
 
               <div class="overlay-ship" id="overlay-carrier">
                 <p class="overlay-ship-text" id="overlay-carrier-text">Destroyer:</p>
-                <span class="temp-ship-img"></span>
+                <span class="temp-ship-img" draggable="true"></span>
               </div>
 
               <div class="overlay-ship" id="overlay-destroyer">
                 <p class="overlay-ship-text" id="overlay-destroyer-text">Submarine:</p>
-                <span class="temp-ship-img"></span>
+                <span class="temp-ship-img" draggable="true"></span>
               </div>
 
               <div class="overlay-ship" id="overlay-carrier">
                 <p class="overlay-ship-text" id="overlay-carrier-text">Patrolboat:</p>
-                <span class="temp-ship-img"></span>
+                <span class="temp-ship-img" draggable="true"></span>
               </div>  
             </div>
+            <button type="submit" class="btn" id="placer-btn">Place Ship</button>
           </div>
         </div>
       </div>

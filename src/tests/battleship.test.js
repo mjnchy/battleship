@@ -22,6 +22,12 @@ const player1 = Player("player1"), player2 = Player("player2");
 // });
 
 test("tests the player function", () => {
+  // for (let i = 0; i < 10; i++) {
+  //   for (let j = 0; j < 10; j+=9) {
+  //     expect(player1.map.grid[i][j].edge).toBeTruthy();
+  //   }
+  // }
+  //
   player1.placeShip("carrier", 4, 5);
   expect(player1.map.grid[2][5].ship).toMatchObject({
     name: "carrier",
