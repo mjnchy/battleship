@@ -7,20 +7,29 @@
   position: relative;
 }
 .stats-board {
+  position: relative;
   background-color: var(--overlay1);
   width: 75%;
   height: 49%;
   margin-left: auto;
   border-radius: 10px;
-  transition: all, 250ms;
+  transition: all, 1.5s;
 }
 
-#player-stats.hidden {
-  transform: translateY(-500%);
+#player-stats {
+  top: -100%;
 }
 
-#enemy-stats.hidden {
-  transform: translateY(500%);
+#enemy-stats {
+  bottom: -100%;
+}
+
+#player-stats.visible {
+  transform: translateY(200%);
+}
+
+#enemy-stats.visible {
+  transform: translateY(-200%);
 }
 
 .fleet-header {
