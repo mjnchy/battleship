@@ -11,7 +11,7 @@
       <div id="container">  
         <div id="gameboard-container"></div>
         <div id="stats-container">
-          <div class="stats-board" id="player-stats" data-active="false">
+          <div class="stats-board hidden" id="player-stats">
             <h2 class="fleet-header", id="player-fleet-header">Your Fleet</h2>
             <div class="ship-stats" id="player-carrier-stats"></div>
             <div class="ship-stats" id="player-battleship-stats"></div>
@@ -19,7 +19,7 @@
             <div class="ship-stats" id="player-submarine-stats"></div>
             <div class="ship-stats" id="player-patrolboat-stats"></div>
           </div>
-          <div class="stats-board" id="enemy-stats" data-active="false">
+          <div class="stats-board hidden" id="enemy-stats">
             <h2 class="fleet-header", id="enemy-fleet-header">Enemy Fleet</h2>
             <div class="ship-stats" id="enemy-carrier-stats"></div>
             <div class="ship-stats" id="enemy-battleship-stats"></div>
@@ -28,7 +28,7 @@
             <div class="ship-stats" id="enemy-patrolboat-stats"></div>
           </div>
 
-          <div id="ship-placement-overlay" data-active="true">
+          <div class="hidden" id="ship-placement-overlay">
             <h2 id="ship-overlay-header">Place Your Ships</h2>
             
             <div id="ship-axis-div">

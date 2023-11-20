@@ -1,0 +1,36 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--mantle);
+  color: var(--text);
+  overflow: hidden;
+}
+
+h1 {
+  font-size: 5rem;
+}
+
+#title-header {
+  width: fit-content;
+  margin: 30px auto 10px;
+}
+
+#container {
+  width: 90vw;
+  height: 90vh;
+  display: flex;
+  margin: auto 25px auto auto;
+}
+
+#gameboard-container, #stats-container {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#gameboard-container {
+  flex-basis: 75%;
+  height: 70%;
+  margin: clamp(50px, 5%, 100px) auto 50px 10px;
+}
