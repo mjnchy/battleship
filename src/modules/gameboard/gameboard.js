@@ -18,7 +18,7 @@ function Gameboard () {
       if (orientation != "vertical" && orientation != "horizontal")
       throw new Error("Invalid orientation. Ships can only be placed either horizontally or vertically.");
       
-      const arr = [],
+      const arr = [], idArr = [],
       halfLength = Math.floor(newShip.length/2);
 
       let start = orientation == "vertical"? x - halfLength: y - halfLength;
@@ -28,8 +28,10 @@ function Gameboard () {
       
       for (let i = start; i < end; i++) arr.push(orientation == "vertical"? [i, y]: [x, i])
 
-      arr.forEach(newCor => map.grid[newCor[0]][newCor[1]].ship = newShip);
+      arr.forEach(newCor => { const node = map.grid[newCor[0]][newCor[1]]; node.ship = newShip; idArr.push(node.identifier); });
       ships.push(newShip);
+
+      return idArr;
     },
 
     receiveAttack: (x, y) => {
@@ -52,7 +54,6 @@ function createBoard () {
       const identifier = j+(i * rows);
       board.grid[i][j] = { identifier, ship: null };
       board.attacked[identifier] = false;
-      // if (i == 0 || i == 9 || j == 0 || j == 9) board.grid[i][j].edge = true;
     }
   }
 
