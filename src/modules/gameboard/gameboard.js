@@ -11,12 +11,12 @@ function Gameboard () {
     
     allShipsSunk: () => ships.every(ship => ship.isSunk()),
 
-    placeShip: (ship, x, y, orientation = "vertical") => {
+    placeShip: (ship, x, y, orientation = "horizontal") => {
       const target = map.grid[x][y], newShip = Ship(ship);
       if (target.ship) return "Cannot place two ships at the same cordinate.";
       if (!newShip.length > 1) target.ship = newShip;
       if (orientation != "vertical" && orientation != "horizontal")
-      return "Invalid orientation. Ships can only be placed either horizontally or vertically."
+      throw new Error("Invalid orientation. Ships can only be placed either horizontally or vertically.");
       
       const arr = [],
       halfLength = Math.floor(newShip.length/2);

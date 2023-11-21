@@ -28,36 +28,33 @@ test("tests the player function", () => {
     length: 4,
   });
 
-  expect(player1.map.grid[8][9].ship).toMatchObject({
+  expect(player1.map.grid[9][8].ship).toMatchObject({
     name: "battleship",
     length: 4,
   });
 
-  expect(player1.map.grid[7][9].ship).toMatchObject({
+  expect(player1.map.grid[9][7].ship).toMatchObject({
     name: "battleship",
     length: 4,
   });
 
-  expect(player1.map.grid[6][9].ship).toMatchObject({
+  expect(player1.map.grid[9][6].ship).toMatchObject({
     name: "battleship",
     length: 4,
   });
 
-  expect(player1.map.grid[5][9].ship).toBeFalsy();
+  expect(player1.map.grid[9][5].ship).toBeFalsy();
 
 
-  player1.placeShip("carrier", 4, 5);
-  expect(player1.map.grid[2][5].ship).toMatchObject({
-    name: "carrier",
-    length: 5,
-  });
+  player1.placeShip("carrier", 5, 5);
+  expect(player1.map.grid[5][2].ship).toBeFalsy();
 
-  expect(player1.map.grid[3][5].ship).toMatchObject({
+  expect(player1.map.grid[5][3].ship).toMatchObject({
     name: "carrier",
     length: 5,
   });
   
-  expect(player1.map.grid[4][5].ship).toMatchObject({
+  expect(player1.map.grid[5][4].ship).toMatchObject({
     name: "carrier",
     length: 5,
   });
@@ -67,25 +64,30 @@ test("tests the player function", () => {
     length: 5,
   });
   
-  expect(player1.map.grid[6][5].ship).toMatchObject({
+  expect(player1.map.grid[5][6].ship).toMatchObject({
+    name: "carrier",
+    length: 5,
+  });
+
+  expect(player1.map.grid[5][7].ship).toMatchObject({
     name: "carrier",
     length: 5,
   });
   
   expect(player1.map.grid[7][5].ship).toBeFalsy();
   
-  player2.placeShip("carrier", 4, 5);
+  player2.placeShip("carrier", 5, 5);
  
-  player1.attack(player2, 2, 5);
-  player1.attack(player2, 3, 5);
-  player1.attack(player2, 4, 5);
-  expect(player1.attack(player2, 4, 5)).toBe("Cannot attack the same cordinates twice");
+  player1.attack(player2, 5, 3);
+  player1.attack(player2, 5, 4);
   player1.attack(player2, 5, 5);
-  player1.attack(player2, 6, 5);
+  expect(player1.attack(player2, 5, 5)).toBe("Cannot attack the same cordinates twice");
+  player1.attack(player2, 5, 6);
+  player1.attack(player2, 5, 7);
 
-  expect(player2.map.grid[2][5].ship.isSunk()).toBe(true);
+  expect(player2.map.grid[5][3].ship.isSunk()).toBe(true);
   expect(player2.map.totalAtks).toBe(5);
-  expect(player2.map.grid[4][5].ship).toBeTruthy();
-  expect(player2.map.attacked[45]).toBe(true);
+  expect(player2.map.grid[5][4].ship).toBeTruthy();
+  expect(player2.map.attacked[54]).toBe(true);
   // expect(player2.allShipsSunk()).toBe(false);
 });
