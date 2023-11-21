@@ -1,4 +1,5 @@
 const interactElems = Object.freeze({
+  playerMap: document.querySelector("#player-map"),
   axisSelected: document.querySelector("#axis-selected"),
   axisList: document.querySelector("#axis-drop-down-list"),
   axisOption1: document.querySelector(".axis-drop-down-item"),
@@ -25,6 +26,13 @@ function selectAxis (element) {
   interactElems.axisList.classList.toggle("expanded");
 };
 
+function drawShips (identifier, length = 5) {
+  const half = Math.floor(length/2);
+  for (let i = parseInt(identifier) - half; i <= parseInt(identifier) + half; i++) {
+    document.querySelector(`#player-map > .cell[data-identifier="${i}"]`).style.backgroundColor = "red";
+  }
+};
+
 function interact () {
   window.addEventListener("click", e => {
     const target = e.target;
@@ -44,6 +52,10 @@ function interact () {
         break;
     };
   });
+
+  document.querySelector("#player-map").addEventListener("click", e => {
+    drawShips(e.target.dataset.identifier);
+  })
 };
 
 export { interact };
