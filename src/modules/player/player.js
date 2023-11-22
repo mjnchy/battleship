@@ -11,8 +11,6 @@ function Player (name) {
       player.enemyMap.attacked[target.identifier] = true;
       player.enemyMap.totalAtks++;
     },
-
-    getCordinates: (identifier) => [Math.floor(identifier/10), identifier%10],
   };
 };
 

@@ -11,7 +11,7 @@ function Gameboard () {
     
     allShipsSunk: () => ships.every(ship => ship.isSunk()),
 
-    placeShip: (ship, x, y, orientation = "horizontal") => {
+    placeShip: (ship, x, y, orientation = "horizontal", cb) => {
       const target = map.grid[x][y], newShip = Ship(ship);
       if (target.ship) return "Cannot place two ships at the same cordinate.";
       if (!newShip.length > 1) target.ship = newShip;
@@ -30,8 +30,7 @@ function Gameboard () {
 
       arr.forEach(newCor => { const node = map.grid[newCor[0]][newCor[1]]; node.ship = newShip; idArr.push(node.identifier); });
       ships.push(newShip);
-
-      return idArr;
+      cb && cb(idArr);
     },
 
     receiveAttack: (x, y) => {
