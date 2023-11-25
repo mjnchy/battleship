@@ -25,8 +25,10 @@ function selectShip (e) {
 };
 
 function deselect (target, exceptions) {
-  const exceptionMatched = exceptions.some(exception => exception == target);
-  exceptionMatched == true? null: document.querySelector(".selected").classList.remove("selected");
+  const exceptionMatched = exceptions.some(exception => exception == target), 
+  selected = document.querySelector(".temp-ship-img.selected");
+  if (exceptionMatched == true) return;
+  selected? selected.classList.remove("selected"): null;
 };
 
 export { toggleAxisMenu, externalMenuCollapse, selectAxis, selectShip, deselect }
