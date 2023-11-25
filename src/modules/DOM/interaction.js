@@ -20,24 +20,20 @@ function interact () {
     deselect(target, [interactables.axisSelected, interactables.axisList, ...interactables.axisOptions,
       ...interactables.shipsOnDeck, ...interactables.playerGrid]);
 
-    switch (target) {
-      case interactables.axisSelected:
+    switch (true) {
+      case target == interactables.axisSelected:
         toggleAxisMenu(interactables.axisList, interactables.axisSelected); 
         break;
 
-      case interactables.axisOptions[0]:
+      case interactables.axisOptions.includes(target):
         selectAxis(target, interactables.axisSelected, interactables.axisList);
         break;
 
-      case interactables.axisOptions[1]:
-        selectAxis(target, interactables.axisSelected, interactables.axisList);
+      case interactables.shipsOnDeck.includes(target):
+        selectShip(target);
         break;
     };
   }); 
-
-  interactables.shipsOnDeck.forEach(ship => {
-    ship.addEventListener("click", selectShip);
-  });
 };
 
 export { interact };

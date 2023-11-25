@@ -19,9 +19,9 @@ function selectAxis (element, button, list) {
   list.classList.toggle("expanded");
 };
 
-function selectShip (e) {
+function selectShip (ship) {
   document.querySelectorAll(".temp-ship-img.selected").forEach(selected => selected.classList.remove("selected"));
-  this.classList.add("selected");
+  ship.classList.add("selected");
 };
 
 function deselect (target, exceptions) {

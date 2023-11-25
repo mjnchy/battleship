@@ -7,9 +7,13 @@ function Gameboard () {
 
   return {
     map, enemyMap,
-    isAttacked: (x, y) => map.attacked[map.grid[x][y].identifier],
-    
+    isAttacked: (x, y) => map.attacked[map.grid[x][y].identifier],    
     allShipsSunk: () => ships.every(ship => ship.isSunk()),
+
+    updateShipCordinates: (ship, start, end) => {
+      start < 0? start = 0: null; 
+      if (end > 9) { end = 10; start = end - ship.length; };
+    },
 
     placeShip: (ship, x, y, orientation = "horizontal", cb) => {
       const target = map.grid[x][y], newShip = Ship(ship);
