@@ -113,6 +113,15 @@
   width: 100%;
   background: white;
   flex-basis: 75%;
+  transition: all, 200ms;
+}
+
+.temp-ship-img:hover {
+  scale: 1.1;
+}
+
+.temp-ship-img.selected {
+  scale: 0.92;
 }
 
 #placer-btn {
