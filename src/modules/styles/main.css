@@ -37,7 +37,8 @@ h1 {
 
 .board {
   width: clamp(380px, 40%, 520px);
-  height: clamp(380px, 65%, 520px);
+  aspect-ratio: 1 / 1;
+  /* height: clamp(380px, 65%, 520px); */
   display: grid;
   grid-template: repeat(10, 1fr)/ repeat(10, 1fr);
   margin: auto 25px;
@@ -47,6 +48,11 @@ h1 {
 
 #player-map, #player-map > .cell {
   border: 1px solid var(--mauve);
+}
+
+#player-map > .cell.highlight {
+  opacity: 0.5;
+  background-color: white;
 }
 
 #enemy-map, #enemy-map > .cell {

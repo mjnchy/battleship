@@ -3,14 +3,23 @@ import { Player } from "./modules/player/player.js";
 import { drawBoards, setupPrompt } from "./modules/DOM/dom.js";
 import { interact } from "./modules/DOM/interaction.js";
 
-function highlightShipLocation (arr) {
-  arr.forEach(identifier => document.querySelector(`#player-map>.cell[data-identifier="${identifier}"]`).style.backgroundColor = "red")};
+const shipParameters = {};
 
-function getParams (e) {
+function mark (arr, addClass, className) {
+  arr.forEach(identifier => {
+    const cell = document.querySelector(`#player-map>.cell[data-identifier="${identifier}"]`);
+    addClass == true? cell.classList.add(className): cell.classList.remove(className);
+  });
+};
+  
+function getParams (e, Alert) {
   const selected = document.querySelector(".selected");
   const identifier = e.target.dataset.identifier;
   const axis = document.querySelector("#axis-selected").dataset.value;
-  if (!selected) return alert("A ship must be selected before it can be placed. Please select a ship.");
+  if (!selected) {
+    if (Alert == false) return null
+    else return alert("A ship must be selected before it can be placed. Please select a ship.");
+  }
   return [ selected.dataset.name, Math.floor(identifier/10), identifier%10, axis ];
 };
 
@@ -22,5 +31,16 @@ window.onload = () => {
   setupPrompt();
   interact();
 
-  document.querySelector("#player-map").addEventListener("click", e => player1.placeShip(...getParams(e), highlightShipLocation, false))
+  function updateShipOnMap (e, addClass, className, alert, storeParams = false) {
+    const params = getParams(e, alert);
+    if (!Array.isArray(params)) return;
+    player1.placeShip(...getParams(e), mark, addClass, className, true);
+    if (storeParams == true) shipParameters[params[0]] = [...params];
+  };
+
+  document.querySelector("#player-map").addEventListener("click", e => updateShipOnMap(e, true, "mark", true, true));
+  document.querySelectorAll("#player-map>.cell").forEach(cell => {
+    cell.addEventListener("mouseenter", e => updateShipOnMap(e, true, "highlight", false));
+    cell.addEventListener("mouseleave", e => updateShipOnMap(e, false, "highlight", false));
+  });
 };
