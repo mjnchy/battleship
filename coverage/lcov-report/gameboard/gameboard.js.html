@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">89.36% </span>
+                <span class="strong">87.03% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>42/47</span>
+                <span class='fraction'>47/54</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">63.15% </span>
+                <span class="strong">62.5% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>12/19</span>
+                <span class='fraction'>15/24</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">75% </span>
+                <span class="strong">66.66% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>6/8</span>
+                <span class='fraction'>6/9</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">94.11% </span>
+                <span class="strong">91.89% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>32/34</span>
+                <span class='fraction'>34/37</span>
             </div>
         
             
@@ -125,7 +125,10 @@
 <a name='L60'></a><a href='#L60'>60</a>
 <a name='L61'></a><a href='#L61'>61</a>
 <a name='L62'></a><a href='#L62'>62</a>
-<a name='L63'></a><a href='#L63'>63</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
@@ -135,7 +138,6 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -155,7 +157,12 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">14x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -179,7 +186,6 @@
 <span class="cline-any cline-yes">400x</span>
 <span class="cline-any cline-yes">400x</span>
 <span class="cline-any cline-yes">400x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -196,18 +202,17 @@ function Gameboard () {
 &nbsp;
   return {
     map, enemyMap,
-    isAttacked: (x, y) =&gt; map.attacked[map.grid[x][y].identifier],
-    
+    isAttacked: (x, y) =&gt; map.attacked[map.grid[x][y].identifier],    
     allShipsSunk: <span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >ships.every(<span class="fstat-no" title="function not covered" >sh</span>ip =&gt; <span class="cstat-no" title="statement not covered" >ship.isSunk())</span>,</span>
 &nbsp;
-    placeShip: (ship, x, y, orientation = "horizontal") =&gt; {
+    placeShip: (ship, x, y, orientation = "horizontal", cb, highlight = false) =&gt; {
       const target = map.grid[x][y], newShip = Ship(ship);
       <span class="missing-if-branch" title="if path not taken" >I</span>if (target.ship) <span class="cstat-no" title="statement not covered" >return "Cannot place two ships at the same cordinate.";</span>
       <span class="missing-if-branch" title="if path not taken" >I</span>if (!newShip.length &gt; 1) <span class="cstat-no" title="statement not covered" >target.ship = newShip;</span>
       <span class="missing-if-branch" title="if path not taken" >I</span>if (orientation != "vertical" &amp;&amp; orientation != "horizontal")
 <span class="cstat-no" title="statement not covered" >      throw new Error("Invalid orientation. Ships can only be placed either horizontally or vertically.");</span>
       
-      const arr = [],
+      const arr = [], idArr = [],
       halfLength = Math.floor(newShip.length/2);
 &nbsp;
       let start = orientation == "vertical"? <span class="branch-0 cbranch-no" title="branch not covered" >x - halfLength:</span> y - halfLength;
@@ -217,8 +222,13 @@ function Gameboard () {
       
       for (let i = start; i &lt; end; i++) arr.push(orientation == "vertical"? <span class="branch-0 cbranch-no" title="branch not covered" >[i, y]:</span> [x, i])
 &nbsp;
-      arr.forEach(newCor =&gt; map.grid[newCor[0]][newCor[1]].ship = newShip);
-      ships.push(newShip);
+      <span class="missing-if-branch" title="if path not taken" >I</span>if (highlight == true) {
+<span class="cstat-no" title="statement not covered" >        arr.forEach(<span class="fstat-no" title="function not covered" >ne</span>wCor =&gt; <span class="cstat-no" title="statement not covered" >idArr.push(map.grid[newCor[0]][newCor[1]].identifier))</span></span>
+      } else {
+        arr.forEach(newCor =&gt; { const node = map.grid[newCor[0]][newCor[1]]; node.ship = newShip; idArr.push(node.identifier); });
+        ships.push(newShip);
+      };
+      return cb? <span class="branch-0 cbranch-no" title="branch not covered" >cb(idArr):</span> idArr;
     },
 &nbsp;
     receiveAttack: (x, y) =&gt; {
@@ -241,7 +251,6 @@ function createBoard () {
       const identifier = j+(i * rows);
       board.grid[i][j] = { identifier, ship: null };
       board.attacked[identifier] = false;
-      // if (i == 0 || i == 9 || j == 0 || j == 9) board.grid[i][j].edge = true;
     }
   }
 &nbsp;
@@ -256,7 +265,7 @@ export { Gameboard };
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-11-21T00:20:17.720Z
+                at 2023-11-26T03:08:08.532Z
             </div>
         <script src="../prettify.js"></script>
         <script>
