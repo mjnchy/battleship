@@ -5,9 +5,16 @@ import { interact } from "./modules/DOM/interaction.js";
 
 const shipParameters = {};
 
-function mark (arr, addClass, className) {
+function mark (arr, addClass, className, ship, unmark = false) {
+  if (unmark == true) {
+    document.querySelectorAll(`#player-map>.cell[data-ship="${ship}"]`).forEach(cell => {
+      delete(cell.dataset.ship);
+      cell.classList.remove("mark");
+    });
+  };
   arr.forEach(identifier => {
     const cell = document.querySelector(`#player-map>.cell[data-identifier="${identifier}"]`);
+    cell.dataset.ship = ship;
     addClass == true? cell.classList.add(className): cell.classList.remove(className);
   });
 };
@@ -31,14 +38,15 @@ window.onload = () => {
   setupPrompt();
   interact();
 
-  function updateShipOnMap (e, addClass, className, alert, storeParams = false) {
+  function updateShipOnMap (e, addClass, className, alert, storeParams = false, unmark) {
+    if (!e.target.classList.contains("cell")) return;
     const params = getParams(e, alert);
     if (!Array.isArray(params)) return;
-    player1.placeShip(...getParams(e), mark, addClass, className, true);
+    player1.placeShip(...getParams(e), mark, addClass, className, true, unmark);
     if (storeParams == true) shipParameters[params[0]] = [...params];
   };
 
-  document.querySelector("#player-map").addEventListener("click", e => updateShipOnMap(e, true, "mark", true, true));
+  document.querySelector("#player-map").addEventListener("click", e => updateShipOnMap(e, true, "mark", true, true, true));
   document.querySelectorAll("#player-map>.cell").forEach(cell => {
     cell.addEventListener("mouseenter", e => updateShipOnMap(e, true, "highlight", false));
     cell.addEventListener("mouseleave", e => updateShipOnMap(e, false, "highlight", false));

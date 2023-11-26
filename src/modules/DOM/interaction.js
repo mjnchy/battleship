@@ -17,8 +17,8 @@ function interact () {
   window.addEventListener("click", e => {
     const target = e.target;
     externalMenuCollapse(target, interactables.axisSelected, ...interactables.axisOptions, interactables.axisList);
-    deselect(target, [interactables.axisSelected, interactables.axisList, ...interactables.axisOptions,
-      ...interactables.shipsOnDeck, ...interactables.playerGrid]);
+    deselect(target, [interactables.playerMap, interactables.axisSelected, interactables.axisList,
+      ...interactables.axisOptions, ...interactables.shipsOnDeck, ...interactables.playerGrid]);
 
     switch (true) {
       case target == interactables.axisSelected:
