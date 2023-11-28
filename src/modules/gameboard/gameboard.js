@@ -10,30 +10,16 @@ function Gameboard () {
     isAttacked: (x, y) => map.attacked[map.grid[x][y].identifier],    
     allShipsSunk: () => ships.every(ship => ship.isSunk()),
 
-    placeShip: (ship, x, y, orientation = "horizontal", cb, add, className, highlight = false, unmark) => {
-      const target = map.grid[x][y], newShip = Ship(ship);
-      if (target.ship) return "Cannot place two ships at the same cordinate.";
-      if (!newShip.length > 1) target.ship = newShip;
-      if (orientation != "vertical" && orientation != "horizontal")
-      throw new Error("Invalid orientation. Ships can only be placed either horizontally or vertically.");
-      
-      const arr = [], idArr = [],
-      halfLength = Math.floor(newShip.length/2);
+    placeShip: (arg) => {
+      if (typeof arg !== "object" || Array.isArray(arg))
+      throw new Error("Argument can only be an object. Arrays and non-object variables are not accepted.");
+      if (!arg.name && !arg.arr && !arg.length) throw new Error("Invalid object.");
+      const newShip = Ship(arg.name);
+      if (arg.length != newShip.length) throw new Error("Length mismatch");
+      if (arg.arr != newShip.length) throw new Error("Array length and ship length mismatch.");
 
-      let start = orientation == "vertical"? x - halfLength: y - halfLength;
-      start < 0? start = 0: null;
-      let end = start + newShip.length; 
-      if (end > 9) { end = 10; start = end - newShip.length; };
-      
-      for (let i = start; i < end; i++) arr.push(orientation == "vertical"? [i, y]: [x, i])
-
-      if (highlight == true) {
-        arr.forEach(newCor => idArr.push(map.grid[newCor[0]][newCor[1]].identifier))
-      } else {
-        arr.forEach(newCor => { const node = map.grid[newCor[0]][newCor[1]]; node.ship = newShip; idArr.push(node.identifier); });
-        ships.push(newShip);
-      };
-      return cb? cb(idArr, add, className, newShip.name, unmark): idArr;
+      arg.arr.forEach(cor => map.grid[cor[0]][cor[1]].ship = newShip);
+      ships.push(newShip);
     },
 
     receiveAttack: (x, y) => {
