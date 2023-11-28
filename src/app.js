@@ -1,7 +1,6 @@
 import "./modules/styles/styles.js";
 import { Player } from "./modules/player/player.js";
-import { drawBoards, getArg, setupPrompt } from "./modules/DOM/dom.js";
-import { interact } from "./modules/DOM/interaction.js";
+import { drawBoards, getArg, setupPrompt, interact } from "./modules/DOM/dom.js";
 
 window.onload = () => {
   const player1 = Player("player1");
