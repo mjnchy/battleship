@@ -1,4 +1,13 @@
+import { getArg } from "./dom";
 import { deselect, externalMenuCollapse, selectAxis, selectShip, toggleAxisMenu } from "./interaction_import_module";
+
+function mark (e, addClass = true, className) {
+  const args = getArg(e);
+  args.arr.forEach(cor => {
+    const identifier = cor[0]*10 + cor[1], cell = document.querySelector(`#player-map>.cell[data-identifier="${identifier}"]`);
+    addClass == true? cell.classList.add(className): cell.classList.remove(className);
+  });
+};
 
 function getInteractables () {
   return Object.freeze({
@@ -33,7 +42,13 @@ function interact () {
         selectShip(target);
         break;
     };
-  }); 
+  });
+  interactables.playerMap.addEventListener("click", e => mark(e, true, mark));
+
+  interactables.playerGrid.forEach(cell => {
+    cell.addEventListener("mouseenter", e => mark(e, true, "highlight"));
+    cell.addEventListener("mouseleave", e => mark(e, false, "highlight"));
+  })
 };
 
 export { interact };

@@ -10,6 +10,4 @@ window.onload = () => {
   drawBoards([[player1.map.grid, "player-map"], [player1.enemyMap.grid, "enemy-map"]]);
   setupPrompt();
   interact();
-
-  player1.placeShip(getArg(26))
 };
