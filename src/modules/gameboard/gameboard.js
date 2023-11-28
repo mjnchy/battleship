@@ -13,10 +13,10 @@ function Gameboard () {
     placeShip: (arg) => {
       if (typeof arg !== "object" || Array.isArray(arg))
       throw new Error("Argument can only be an object. Arrays and non-object variables are not accepted.");
-      if (!arg.name && !arg.arr && !arg.length) throw new Error("Invalid object.");
-      const newShip = Ship(arg.name);
-      if (arg.length != newShip.length) throw new Error("Length mismatch");
-      if (arg.arr != newShip.length) throw new Error("Array length and ship length mismatch.");
+      if (!arg.ship && !arg.arr && !arg.length) throw new Error("Invalid object.");
+      const newShip = Ship(arg.ship);
+      if (newShip.length != arg.length) throw new Error("Length mismatch");
+      if (newShip.length != arg.arr.length) throw new Error("Array length and ship length mismatch.");
 
       arg.arr.forEach(cor => map.grid[cor[0]][cor[1]].ship = newShip);
       ships.push(newShip);

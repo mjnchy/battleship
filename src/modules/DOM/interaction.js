@@ -43,12 +43,12 @@ function interact () {
         break;
     };
   });
-  interactables.playerMap.addEventListener("click", e => mark(e, true, mark));
+  // interactables.playerMap.addEventListener("click", e => mark(e, true, mark));
 
-  interactables.playerGrid.forEach(cell => {
-    cell.addEventListener("mouseenter", e => mark(e, true, "highlight"));
-    cell.addEventListener("mouseleave", e => mark(e, false, "highlight"));
-  })
+  // interactables.playerGrid.forEach(cell => {
+  //   cell.addEventListener("mouseenter", e => mark(e, true, "highlight"));
+  //   cell.addEventListener("mouseleave", e => mark(e, false, "highlight"));
+  // })
 };
 
 export { interact };

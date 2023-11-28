@@ -1,6 +1,6 @@
 import "./modules/styles/styles.js";
 import { Player } from "./modules/player/player.js";
-import { drawBoards, setupPrompt } from "./modules/DOM/dom.js";
+import { drawBoards, getArg, setupPrompt } from "./modules/DOM/dom.js";
 import { interact } from "./modules/DOM/interaction.js";
 
 window.onload = () => {

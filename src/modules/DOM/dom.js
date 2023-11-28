@@ -32,7 +32,7 @@ function setupPrompt () {
 
 function getArg (e) {
   const identifier = parseInt(e.target.dataset.identifier), x = Math.floor(identifier/10), y = identifier%10,
-  data = document.querySelector(".temp-ship-img.selected").dataset, name = data.name, length = parseInt(data.length),
+  data = document.querySelector(".temp-ship-img.selected").dataset, ship = data.name, length = parseInt(data.length),
   arr = [], halfLength = Math.floor(length/2),
   orientation = document.querySelector("#axis-selected").dataset.value;
 
@@ -45,7 +45,7 @@ function getArg (e) {
   if (end > 9) end = 10; start = end - length;
 
   for(let i = start; i < end; i++) arr.push(orientation == "vertical"? [i, y]: [x, i]);
-  return {name, arr, length};
+  return { ship, arr, length };
 };
 
 export { drawBoards, getArg, setupPrompt };
