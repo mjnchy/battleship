@@ -116,6 +116,10 @@
   transition: all, 200ms;
 }
 
+.temp-ship-img.hidden {
+  display: none;
+}
+
 .temp-ship-img:hover {
   scale: 1.1;
 }

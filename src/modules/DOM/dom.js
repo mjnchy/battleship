@@ -1,7 +1,7 @@
 const domElems = Object.freeze({
   gameBoardContainer: document.querySelector("#gameboard-container"),
   setupOverlay: document.querySelector("#ship-placement-overlay"),
-}), shipParams = {};
+}), shipParameters = {};
 
 let interactables = {};
 
@@ -14,10 +14,6 @@ function getInteractables () {
     axisOptions: [...document.querySelectorAll(".axis-drop-down-item")],
     shipsOnDeck: [...document.querySelectorAll(".temp-ship-img")],
   });
-};
-
-function setShipParams (ship, arr, length) {
-  shipParams.ship = ship; shipParams.arr = arr; shipParams.length = length;
 };
 
 function drawBoards (arr) {
@@ -53,10 +49,20 @@ function toggleAxisMenu (menu, button) {
   menu.classList.toggle("expanded");
 };
 
-function externalMenuCollapse (element, button, option1, option2, list) {
-  if (!list.classList.contains("expanded")) return;
-  if (element != button && element != option1 && element != option2)
-  list.classList.toggle("expanded");
+function externalMenuCollapse (element) {
+  if (!interactables.axisList.classList.contains("expanded")) return;
+  if (element != interactables.axisSelected && element != interactables.axisOptions[0] && element != interactables.axisOptions[1])
+  interactables.axisList.classList.toggle("expanded");
+};
+
+function deselect (target) {
+  const exceptions = [ interactables.playerMap, interactables.axisSelected, interactables.axisList,
+    ...interactables.axisOptions, ...interactables.shipsOnDeck, ...interactables.playerGrid],
+  exceptionMatched = exceptions.some(exception => exception == target), 
+  selected = document.querySelector(".temp-ship-img.selected");
+
+  if (exceptionMatched == true) return;
+  selected? selected.classList.remove("selected"): null;
 };
 
 function selectAxis (element, button, list) {
@@ -74,82 +80,62 @@ function selectShip (ship) {
   ship.classList.add("selected");
 };
 
-function deselect (target, exceptions) {
-  const exceptionMatched = exceptions.some(exception => exception == target), 
-  selected = document.querySelector(".temp-ship-img.selected");
-  if (exceptionMatched == true) return;
-  selected? selected.classList.remove("selected"): null;
+function highlightShip (ev, highlight = true) {
+  const selected = document.querySelector(".selected");
+  if (!selected) return;
+  
+  const length = selected.dataset.length, axis = document.querySelector("#axis-selected").dataset.value;
+  if (axis != "horizontal" && axis != "vertical")
+  console.log(new Error("Invalid axis. Axis can only be horizontal or vertical"));
+
+  const arr = getArr(parseInt(ev.target.dataset.identifier), axis, parseInt(length));
+  arr.forEach(subArr => {
+    const cell = document.querySelector(`#player-map>.cell[data-identifier="${subArr[0]*10 + subArr[1]}"]`);
+    highlight == true? cell.classList.add("highlight"): cell.classList.remove("highlight");
+  });
 };
 
-function getArg (e, selected, orientation) {
-  const identifier = parseInt(e.target.dataset.identifier), x = Math.floor(identifier/10), y = identifier%10,
-  ship = selected.dataset.name, length = parseInt(selected.dataset.length),
-  arr = [], halfLength = Math.floor(length/2);
+function markShip (ev) {
+  const selected = document.querySelector(".selected");
+  if (!selected) return alert("A ship has to be selected before it can be placed. Please select a ship and try again.");
 
-  let start = orientation == "vertical"? x - halfLength: y - halfLength;
+  const name = selected.dataset.name, length = selected.dataset.length,
+  axis = document.querySelector("#axis-selected").dataset.value;
+  if (axis != "horizontal" && axis != "vertical") throw new Error("Invalid axis. Axis can only be horizontal or vertical");
+
+  const arr = getArr(parseInt(ev.target.dataset.identifier), axis, parseInt(length));
+  arr.forEach(subArr => {
+    const cell = document.querySelector(`#player-map>.cell[data-identifier="${subArr[0]*10 + subArr[1]}"]`);
+    cell.classList.add("mark");
+    cell.dataset.name = selected.dataset.name;
+  });
+
+  setShipParams(name, arr, length);
+};
+
+function getArr (identifier, axis, length) {
+  const x = Math.floor(identifier/10), y = identifier%10, halfLength = Math.floor(length/2), arr = [];
+
+  let start = axis == "vertical"? x - halfLength: y - halfLength;
   if (start < 0) start = 0;
   let end = start + length;
   if (end > 9) end = 10; start = end - length;
 
-  for(let i = start; i < end; i++) arr.push(orientation == "vertical"? [i, y]: [x, i]);
-  return { ship, arr, length };
+  if (axis == "horizontal") for (let i = start; i < end; i++) arr.push([x, i])
+  else for (let i = start; i < end; i++) arr.push([i, y])
+
+  return arr;
 };
 
-function updateShipOnMap (e, addClass = true, className, Alert = false) {
-  const selected = document.querySelector(".temp-ship-img.selected"),
-  orientation = document.querySelector("#axis-selected").dataset.value;
-
-  if (!selected) return Alert == false? null: alert("A ship must be selected before it can be placed. Please select a ship.");
-  if (orientation != "vertical" && orientation != "horizontal") 
-  throw new Error("Invalid orientation. Orientation can only be vertical or horizontal.");
-  
-  const args = getArg(e, selected, orientation);
-  
-  if (className == "mark") {
-    document.querySelectorAll("#player-map>.cell.mark").forEach(cell => cell.classList.remove("mark"));
-    setShipParams(args.ship, args.arr, args.length);
-  };
-
-  args.arr.forEach(cor => {
-    const identifier = cor[0]*10 + cor[1], cell = document.querySelector(`#player-map>.cell[data-identifier="${identifier}"]`);
-    addClass == true? cell.classList.add(className): cell.classList.remove(className);
-  });
-
-};
-
-function dragStart (e) {
-  e.target.classList.add("selected");
-  e.dataTransfer.setData("text/plain", e.target);
-  // setTimeout(() => e.target.parentElement.removeChild(e.target), 0);
-};
-
-function dragEnd (e) {
-  console.log("end");
-};
-
-function dragEnter (e) {
-  e.preventDefault();
-  updateShipOnMap(e, true, "highlight");
-};
-
-function dragOver (e) {
-  e.preventDefault();
-};
-
-function dragLeave (e) {
-  updateShipOnMap(e, false, "highlight");
-};
-
-function drop (e) {
-  updateShipOnMap(e, true, "mark", true);
+function setShipParams (name, arr, length) {
+  shipParameters.name = {name, arr, length};
 };
 
 function interact () {
   window.addEventListener("click", e => {
     const target = e.target;
-    externalMenuCollapse(target, interactables.axisSelected, ...interactables.axisOptions, interactables.axisList);
-    deselect(target, [interactables.playerMap, interactables.axisSelected, interactables.axisList,
-      ...interactables.axisOptions, ...interactables.shipsOnDeck, ...interactables.playerGrid]);
+    deselect(target);
+    externalMenuCollapse(target);
 
     switch (true) {
       case target == interactables.axisSelected:
@@ -166,20 +152,11 @@ function interact () {
     };
   });
 
-  interactables.shipsOnDeck.forEach(ship => {
-    ship.addEventListener("dragstart", dragStart);
-    ship.addEventListener("dragend", dragEnd);
-  });
-
-  interactables.playerMap.addEventListener("click", e => updateShipOnMap(e, true, "mark", true));
-  interactables.playerMap.addEventListener("drop", drop);
+  interactables.playerMap.addEventListener("click", markShip);
   interactables.playerGrid.forEach(cell => {
-    cell.addEventListener("mouseenter", e => updateShipOnMap(e, true, "highlight"));
-    cell.addEventListener("mouseleave", e => updateShipOnMap(e, false, "highlight"));
-    cell.addEventListener("dragenter", dragEnter);
-    cell.addEventListener("dragover", dragOver);
-    cell.addEventListener("dragleave", dragLeave);
-  })
+    cell.addEventListener("mouseenter", highlightShip);
+    cell.addEventListener("mouseleave", e => highlightShip(e, false));
+  });
 };
 
-export { drawBoards, getArg, setupPrompt, interact };
+export { drawBoards, setupPrompt, interact };
