@@ -80,37 +80,46 @@ function selectShip (ship) {
   ship.classList.add("selected");
 };
 
-function highlightShip (ev, highlight = true) {
+function updateShipOnMap (ev, className = "mark", addClass = true, postAlert = true) {
   const selected = document.querySelector(".selected");
-  if (!selected) return;
-  
-  const length = selected.dataset.length, axis = document.querySelector("#axis-selected").dataset.value;
-  if (axis != "horizontal" && axis != "vertical")
-  console.log(new Error("Invalid axis. Axis can only be horizontal or vertical"));
-
-  const arr = getArr(parseInt(ev.target.dataset.identifier), axis, parseInt(length));
-  arr.forEach(subArr => {
-    const cell = document.querySelector(`#player-map>.cell[data-identifier="${subArr[0]*10 + subArr[1]}"]`);
-    highlight == true? cell.classList.add("highlight"): cell.classList.remove("highlight");
-  });
-};
-
-function markShip (ev) {
-  const selected = document.querySelector(".selected");
-  if (!selected) return alert("A ship has to be selected before it can be placed. Please select a ship and try again.");
+  if (!selected) return postAlert == false? null:
+  alert("A ship has to be selected before it can be placed. Please select a ship and try again.");
 
   const name = selected.dataset.name, length = selected.dataset.length,
   axis = document.querySelector("#axis-selected").dataset.value;
   if (axis != "horizontal" && axis != "vertical") throw new Error("Invalid axis. Axis can only be horizontal or vertical");
 
   const arr = getArr(parseInt(ev.target.dataset.identifier), axis, parseInt(length));
-  arr.forEach(subArr => {
-    const cell = document.querySelector(`#player-map>.cell[data-identifier="${subArr[0]*10 + subArr[1]}"]`);
-    cell.classList.add("mark");
-    cell.dataset.name = selected.dataset.name;
-  });
+  
+  if (className == "mark") {
+    let currentShip;
+    const filled = arr.some(subArr => {
+      const cell = document.querySelector(`#player-map>.cell[data-identifier="${subArr[0]*10 + subArr[1]}"]`);
+      if (cell.classList.contains("mark")) {
+        currentShip = cell.dataset.name;
+        return true;
+      } return false;
+    });
+    if (filled == true && currentShip != name) return;
 
-  setShipParams(name, arr, length);
+    document.querySelectorAll(`#player-map>.cell[data-name="${name}"]`).forEach(cell => {
+      cell.classList.remove("mark");
+      delete(cell.dataset.name)
+    });
+    
+    arr.forEach(subArr => {
+      const cell = document.querySelector(`#player-map>.cell[data-identifier="${subArr[0]*10 + subArr[1]}"]`);
+      cell.classList.add("mark");
+      cell.dataset.name = selected.dataset.name;
+    });
+    setShipParameters(name, arr, length);
+    console.log(shipParameters);
+  } 
+  else { arr.forEach(subArr => {
+      const cell = document.querySelector(`#player-map>.cell[data-identifier="${subArr[0]*10 + subArr[1]}"]`);
+      addClass == true? cell.classList.add(className): cell.classList.remove(className);
+    });
+  };
 };
 
 function getArr (identifier, axis, length) {
@@ -127,8 +136,8 @@ function getArr (identifier, axis, length) {
   return arr;
 };
 
-function setShipParams (name, arr, length) {
-  shipParameters.name = {name, arr, length};
+function setShipParameters (name, arr, length) {
+  shipParameters[name] = {name, arr, length};
 };
 
 function interact () {
@@ -152,10 +161,10 @@ function interact () {
     };
   });
 
-  interactables.playerMap.addEventListener("click", markShip);
+  interactables.playerMap.addEventListener("click", updateShipOnMap);
   interactables.playerGrid.forEach(cell => {
-    cell.addEventListener("mouseenter", highlightShip);
-    cell.addEventListener("mouseleave", e => highlightShip(e, false));
+    cell.addEventListener("mouseenter", e => updateShipOnMap(e, "highlight", true, false));
+    cell.addEventListener("mouseleave", e => updateShipOnMap(e, "highlight", false, false));
   });
 };
 
