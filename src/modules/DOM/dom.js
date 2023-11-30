@@ -34,7 +34,6 @@ function drawBoards (arr) {
         newBoard.append(div);
       });
     });
-
     domElems.gameBoardContainer.append(newBoard);
     interactables = getInteractables();
   });
@@ -113,9 +112,7 @@ function updateShipOnMap (ev, className = "mark", addClass = true, postAlert = t
       cell.dataset.name = selected.dataset.name;
     });
     setShipParameters(name, arr, length);
-    console.log(shipParameters);
-  } 
-  else { arr.forEach(subArr => {
+  } else { arr.forEach(subArr => {
       const cell = document.querySelector(`#player-map>.cell[data-identifier="${subArr[0]*10 + subArr[1]}"]`);
       addClass == true? cell.classList.add(className): cell.classList.remove(className);
     });
@@ -137,7 +134,7 @@ function getArr (identifier, axis, length) {
 };
 
 function setShipParameters (name, arr, length) {
-  shipParameters[name] = {name, arr, length};
+  shipParameters[name] = { name, arr, length };
 };
 
 function interact () {
@@ -168,4 +165,4 @@ function interact () {
   });
 };
 
-export { drawBoards, setupPrompt, interact };
+export { shipParameters, drawBoards, setupPrompt, interact };
