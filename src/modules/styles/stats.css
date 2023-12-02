@@ -1,12 +1,10 @@
 .stats-board {
-  font-size: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
   background-color: var(--overlay1);
   border-radius: 10px;
-  transition: all, 1.5s;
-}
-
-.fleet-ship-header {
-  margin-left: 25px;
+  transition: all, 1.5s;  
 }
 
 #player-stats {
@@ -31,6 +29,15 @@
 }
 
 .fleet-header {
-  font-size: 2rem;
+  font-size: 2.8rem;
   text-align: center;
+  margin-top: 50px;
+}
+
+.fleet-content {
+  font-size: 2.4rem;
+}
+
+.fleet-content > div {
+  margin: 50px 25px;
 }
