@@ -22,7 +22,7 @@ const player1 = Player("player1"), player2 = Player("player2");
 // });
 
 test("tests the player function", () => {
-  player1.placeShip({name: "battleship", arr: [[9, 9], [9, 8], [9, 7], [9, 6]], length: 4});
+  player1.placeShip({ship: "battleship", arr: [[9, 9], [9, 8], [9, 7], [9, 6]], length: 4});
   expect(player1.map.grid[9][9].ship).toMatchObject({
     name: "battleship",
     length: 4,
@@ -46,7 +46,7 @@ test("tests the player function", () => {
   expect(player1.map.grid[9][5].ship).toBeFalsy();
 
 
-  player1.placeShip({name: "carrier", arr: [[5,3], [5, 4], [5, 5], [5, 6], [5, 7]], length: 5});
+  player1.placeShip({ship: "carrier", arr: [[5,3], [5, 4], [5, 5], [5, 6], [5, 7]], length: 5});
   expect(player1.map.grid[5][2].ship).toBeFalsy();
 
   expect(player1.map.grid[5][3].ship).toMatchObject({
@@ -76,7 +76,7 @@ test("tests the player function", () => {
   
   expect(player1.map.grid[7][5].ship).toBeFalsy();
   
-  player2.placeShip({name: "carrier", arr: [[5,3], [5, 4], [5, 5], [5, 6], [5, 7]], length: 5});
+  player2.placeShip({ship: "carrier", arr: [[5,3], [5, 4], [5, 5], [5, 6], [5, 7]], length: 5});
  
   player1.attack(player2, 5, 3);
   player1.attack(player2, 5, 4);

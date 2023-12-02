@@ -18,21 +18,16 @@ h1 {
 }
 
 #container {
-  width: 90vw;
+  width: 100vw;
   height: 90vh;
-  display: flex;
-  margin: auto 25px auto auto;
-}
-
-#gameboard-container, #stats-container {
-  display: flex;
-  justify-content: space-evenly;
+  display: grid;
+  grid-template: repeat(32, 1fr) / repeat(32, 1fr);
 }
 
 #gameboard-container {
-  flex-basis: 75%;
-  height: 70%;
-  margin: clamp(50px, 5%, 100px) auto 50px 10px;
+  grid-area: 8 / 7 / 22 / 24;
+  display: flex;
+  justify-content: space-between;
 }
 
 .board {

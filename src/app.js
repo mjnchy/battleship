@@ -15,9 +15,12 @@ window.onload = () => {
       player1.placeShip(shipParameters[ship]);
       const element = document.querySelector(`.temp-ship-img[data-name="${ship}"]`);
       element.parentElement.removeChild(element);
+      delete(shipParameters[ship]);
     });
-    toggleSetupPrompt();
-    setupStatBoards();
+    if (player1.ships.length == 5) {
+      toggleSetupPrompt();
+      setupStatBoards();
+    }
   }; 
 
   interactables.shipPlacer.addEventListener("click", place);

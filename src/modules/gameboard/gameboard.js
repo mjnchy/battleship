@@ -6,7 +6,7 @@ function Gameboard () {
   enemyMap.success = [];
 
   return {
-    map, enemyMap,
+    map, enemyMap, ships,
     isAttacked: (x, y) => map.attacked[map.grid[x][y].identifier],    
     allShipsSunk: () => ships.every(ship => ship.isSunk()),
 

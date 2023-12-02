@@ -1,28 +1,26 @@
-#stats-container {
-  height: 90%;
-  flex-basis: 25%;
-  flex-direction: column;
-  gap: 30px;
-  margin: auto;
-  position: relative;
-}
 .stats-board {
-  position: relative;
+  font-size: 3rem;
   background-color: var(--overlay1);
-  width: 75%;
-  height: 49%;
-  margin-left: auto;
   border-radius: 10px;
   transition: all, 1.5s;
 }
 
+.fleet-ship-header {
+  margin-left: 25px;
+}
+
 #player-stats {
-  top: -100%;
+  grid-area: 2 / 27 / 15 / 32;
+  position: relative;
+  top: -200%;
 }
 
 #enemy-stats {
-  bottom: -100%;
+  grid-area: 19 / 27 / 32 / 32;
+  position: relative;
+  bottom: -200%;
 }
+
 
 #player-stats.visible {
   transform: translateY(200%);

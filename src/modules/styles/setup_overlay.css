@@ -1,14 +1,12 @@
 #ship-placement-overlay {
-  width: clamp(390px, calc(100% + 45px), 590px);
-  height: 800px;
-  position: absolute;
-  right: -555px;
+  grid-area: 5 / 26 / 28 / 33;
   display: flex;
   flex-direction: column;
   gap: 25px;
+  position: relative;
+  right: -100%;
   visibility: hidden;
   opacity: 0;
-  margin: auto;
   border-radius: 10px 0 0 10px;
   background: var(--overlay1);
   text-align: center;
@@ -16,7 +14,7 @@
 }
 
 #ship-placement-overlay.visible {
-  transform: translateX(-520px);
+  transform: translateX(-100%);
   opacity: 1;
   visibility: visible;
 }
