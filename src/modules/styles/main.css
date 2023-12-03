@@ -26,25 +26,27 @@ h1 {
 
 #gameboard-container {
   display: flex;
-  justify-content: space-between;
-  width: 50%;
+  justify-content: center;
+  width: 65%;
   margin: auto 50px auto auto;
 }
 
 #sidebar-grid {
   width: clamp(450px, 25%, 500px);
   display: grid;
-  grid-template: repeat(10, 1fr) / repeat(5, 1fr);
+  grid-template: repeat(20, 1fr) / repeat(5, 1fr);
 }
 
 .board {
-  width: clamp(380px, 40%, 520px);
+  min-width: 300px;
+  width: 100%;
+  max-width: 550px;
   aspect-ratio: 1 / 1;
   display: grid;
   grid-template: repeat(10, 1fr)/ repeat(10, 1fr);
-  margin: auto 25px;
   border-radius: 10px;
   overflow: hidden;
+  margin-inline: 5%;
 }
 
 #player-map, #player-map > .cell {
