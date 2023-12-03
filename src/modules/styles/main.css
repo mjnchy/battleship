@@ -20,14 +20,21 @@ h1 {
 #container {
   width: 100vw;
   height: 90vh;
-  display: grid;
-  grid-template: repeat(32, 1fr) / repeat(32, 1fr);
+  display: flex;
+  gap: 5px;
 }
 
 #gameboard-container {
-  grid-area: 8 / 7 / 22 / 24;
   display: flex;
   justify-content: space-between;
+  width: 50%;
+  margin: auto 50px auto auto;
+}
+
+#sidebar-grid {
+  width: clamp(450px, 25%, 500px);
+  display: grid;
+  grid-template: repeat(10, 1fr) / repeat(5, 1fr);
 }
 
 .board {
