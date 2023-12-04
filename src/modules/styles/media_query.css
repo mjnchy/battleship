@@ -21,21 +21,37 @@
   }
 
   #gameboard-container {
+    display: block;
     width: calc(100% - 5px);
-    height: calc(75vh - (3rem + 20px));
+    height: calc(55vh - (3rem + 20px));
     margin: auto auto 5px;
+    order: 2;
+  }
+
+  #gameboard-container.mobile.game {
+    display: flex;
+    height: calc(75vh - (3rem + 20px));
     order: 2;
     justify-content: center;
     flex-direction: column;
   }
 
   .board {
+    position: relative;
     min-width: 33vw;
     overflow: hidden;
     margin: auto auto 15px;
+    transition: all, 2s;
   }
 
   #player-map {
+    top: 0;
+    right: 0;
+    width: 85%;
+    margin-top: 0;
+  }
+
+  #player-map.mobile.game {
     width: 25%;
     margin-right: 15px;
   }
@@ -43,6 +59,13 @@
   #enemy-map {
     width: 85%;
     margin-top: 0;
+    visibility: hidden;
+    bottom: -33vh;
+  }
+
+  #enemy-map.mobile.game {
+    visibility: visible;
+    transform: translateY(-33vh);
   }
 
   #sidebar-grid {
