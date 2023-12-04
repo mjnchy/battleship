@@ -1,17 +1,94 @@
-/* @media (max-width: 1440px) { */
-/*   #gameboard-container { */
-/*     grid-area: 8 / 2 / 22 / 20; */
-/*   } */
-/**/
-/*   #ship-placement-overlay { */
-/*     grid-area: 5 / 22 / 28 / 33; */
-/*   } */
-/**/
-/*   #player-stats { */
-/*     grid-area: 2 / 24 / 15 / 33; */
-/*   } */
-/**/
-/*   #enemy-stats { */
-/*     grid-area: 19 / 24 / 32 / 33; */
-/*   } */
-/* } */
+@media (max-width: 1200px) {
+  * {
+    overflow: none;
+    box-sizing: border-box;
+  }
+
+  #title-header {
+    font-size: 3rem;
+    margin: 15px auto 5px;
+  }
+
+  #sidebar-grid > *:not(#ship-placement-overlay) {
+    display: none;
+  }
+
+  #container {
+    height: calc(100vh - (3rem + 20px));
+    width: 100%;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  #gameboard-container {
+    width: calc(100% - 5px);
+    height: calc(75vh - (3rem + 20px));
+    margin: auto auto 5px;
+    order: 2;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .board {
+    min-width: 33vw;
+    overflow: hidden;
+    margin: auto auto 15px;
+  }
+
+  #player-map {
+    width: 25%;
+    margin-right: 15px;
+  }
+
+  #enemy-map {
+    width: 85%;
+    margin-top: 0;
+  }
+
+  #sidebar-grid {
+    width: calc(100% - 5px);
+    height: calc(25vh - (3rem + 20px));
+    margin: 5px auto auto;  
+    display: block;
+  }
+
+  #ship-overlay-header, .overlay-ship-text {
+    display: none;
+  }
+
+  .btn {
+    font-size: 1rem;
+    width: 20vw;
+  }
+
+  #ship-placement-overlay {
+    width: calc(100% - 5px);
+    display: inline-block;
+    height: 100%;
+  }
+
+  /* #gameboard-container { */
+  /*   height: 75%; */
+  /*   width: calc(100% - 5px); */
+  /*   display: block; */
+  /*   order: 2; */
+  /*   margin: auto auto 5px; */
+  /* } */
+  /**/
+  /* .board { */
+  /*   min-width: 33vw; */
+  /*   overflow: hidden; */
+  /* } */
+  /**/
+  /* #player-map { */
+  /*   width: 25%; */
+  /*   margin: auto auto 2% 1%; */
+  /* } */
+  /**/
+  /* #enemy-map { */
+  /*   min-width: 0; */
+  /*   width: 75%; */
+  /*   margin: auto auto 5px; */
+  /* } */
+
+}
