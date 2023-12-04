@@ -1,6 +1,6 @@
 @media (max-width: 900px) {
   * {
-    overflow: none;
+    overflow: hidden;
     box-sizing: border-box;
   }
 
@@ -62,33 +62,26 @@
   }
 
   #ship-placement-overlay {
-    width: calc(100% - 5px);
-    display: inline-block;
-    height: 100%;
+    position: absolute;
+    width: calc(100vw - 10px);
+    height: 35vh;
+    inset: -35vh 5px auto 5px;
+    border-radius: 10px;
+    display: grid;
+    grid-template: repeat(10, 1fr) / repeat(10, 1fr);
   }
 
-  /* #gameboard-container { */
-  /*   height: 75%; */
-  /*   width: calc(100% - 5px); */
-  /*   display: block; */
-  /*   order: 2; */
-  /*   margin: auto auto 5px; */
-  /* } */
-  /**/
-  /* .board { */
-  /*   min-width: 33vw; */
-  /*   overflow: hidden; */
-  /* } */
-  /**/
-  /* #player-map { */
-  /*   width: 25%; */
-  /*   margin: auto auto 2% 1%; */
-  /* } */
-  /**/
-  /* #enemy-map { */
-  /*   min-width: 0; */
-  /*   width: 75%; */
-  /*   margin: auto auto 5px; */
-  /* } */
+  #ship-placement-overlay.visible {
+    transform: translate(0, calc(35vh + 65px));
+  }
 
+  #ship-axis-div {
+    grid-area: 1 / 4 / 3 / 8;
+    margin: 0;
+  }
+
+  #placer-btn {
+    grid-area: 9 / 5 / 10 / 7;
+    margin: 0;
+  }
 }
