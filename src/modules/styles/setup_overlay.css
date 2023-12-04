@@ -1,5 +1,5 @@
 #ship-placement-overlay {
-  max-height: 1000px;
+  max-height: clamp(300px, 50vh, 750px);
   grid-area: 5 / 1 / 17 / 6;
   display: flex;
   flex-direction: column;

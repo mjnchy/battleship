@@ -1,14 +1,11 @@
 * {
   box-sizing: border-box;
-  overflow: none;
-  margin: 0;
-  padding: 0;
-  border: none;
 }
 
 body {
   background: var(--mantle);
   color: var(--text);
+  overflow: hidden;
 }
 
 h1 {
@@ -41,15 +38,15 @@ h1 {
 }
 
 .board {
-  min-width: 300px;
+  min-width: 200px;
   width: 100%;
   max-width: 550px;
   aspect-ratio: 1 / 1;
   display: grid;
   grid-template: repeat(10, 1fr)/ repeat(10, 1fr);
   border-radius: 10px;
+  overflow: hidden;
   margin-inline: 5%;
-  transition: all, 2s;
 }
 
 #player-map, #player-map > .cell {
