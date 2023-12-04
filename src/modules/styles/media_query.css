@@ -21,51 +21,51 @@
   }
 
   #gameboard-container {
-    display: block;
     width: calc(100% - 5px);
-    height: calc(55vh - (3rem + 20px));
+    height: calc(60vh - (3rem + 20px));
     margin: auto auto 5px;
-    order: 2;
-  }
-
-  #gameboard-container.mobile.game {
-    display: flex;
-    height: calc(75vh - (3rem + 20px));
     order: 2;
     justify-content: center;
     flex-direction: column;
+    transition: all, 2s;
+  }  
+  #gameboard-container.mobile.game {
+    height: calc(75vh - (3rem + 20px));
   }
 
   .board {
     position: relative;
     min-width: 33vw;
+    min-height: 33vw;
+    max-width: 85vw;
+    max-height: 85vw;
     overflow: hidden;
     margin: auto auto 15px;
     transition: all, 2s;
   }
 
   #player-map {
+    flex-basis: 100%;
     top: 0;
     right: 0;
-    width: 85%;
-    margin-top: 0;
   }
-
   #player-map.mobile.game {
-    width: 25%;
-    margin-right: 15px;
+    flex-basis: 35%;
+    width: 50vw;
+    height: 50vw;
+    margin-right: 5px;
   }
 
   #enemy-map {
-    width: 85%;
+    bottom: -65vh;
+    flex-basis: 0;
     margin-top: 0;
-    visibility: hidden;
-    bottom: -33vh;
   }
-
   #enemy-map.mobile.game {
-    visibility: visible;
-    transform: translateY(-33vh);
+    flex-basis: 65%;
+    width: 80vw;
+    margin-top: 0;
+    transform: translateY(-65vh);
   }
 
   #sidebar-grid {
