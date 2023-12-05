@@ -1,41 +1,86 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
 * {
   box-sizing: border-box;
-}
-
-body {
-  background: var(--mantle);
-  color: var(--text);
   overflow: hidden;
 }
 
-h1 {
-  font-size: 5rem;
+#wrapper {
+  height: 100vh;
+  width: 100vw;
+  color: var(--text);
+  background-color: var(--mantle);
+  overflow: hidden;
 }
 
 #title-header {
+  font-size: 4vh;
+  font-weight: 700;
   width: fit-content;
-  margin: 30px auto 10px;
+  margin: 3vh auto 1vh;
 }
 
 #container {
+  height: 100vh;
   width: 100vw;
-  height: 90vh;
   display: flex;
-  gap: 5px;
+  gap: 10px;
 }
 
 #gameboard-container {
+  flex: 3;
+  margin: auto 25px auto auto;
   display: flex;
-  justify-content: center;
-  width: 65%;
-  margin: auto 50px auto auto;
+  justify-content: flex-end;
 }
 
 #sidebar-grid {
-  width: clamp(450px, 25%, 500px);
+  flex: 1;
   display: grid;
   grid-template: repeat(20, 1fr) / repeat(5, 1fr);
 }
+
 
 .board {
   min-width: 200px;
@@ -45,7 +90,6 @@ h1 {
   display: grid;
   grid-template: repeat(10, 1fr)/ repeat(10, 1fr);
   border-radius: 10px;
-  overflow: hidden;
   margin-inline: 5%;
 }
 
@@ -68,17 +112,16 @@ h1 {
 }
 
 .cell {
-  background: transparent;
   padding: 5px;
 }
 
 .btn {
-  width: 100px;
+  width: fit-content;
   color: var(--text);
   background-color: var(--overlay2);
   border: 1px solid var(--red);
   border-radius: 10px;
-  padding: 10px;
+  padding: 0.5vh 1vw;
   outline: none;
   transition: all, 250ms;
 }

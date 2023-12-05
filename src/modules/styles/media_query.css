@@ -9,10 +9,6 @@
     margin: 15px auto 5px;
   }
 
-  #sidebar-grid > *:not(#ship-placement-overlay) {
-    display: none;
-  }
-
   #container {
     height: calc(100vh - (3rem + 20px));
     width: 100%;
@@ -45,12 +41,13 @@
   }
 
   #player-map {
-    flex-basis: 100%;
+    flex: 1;
+    /* flex-basis: 95%; */
     top: 0;
     right: 0;
   }
   #player-map.mobile.game {
-    flex-basis: 35%;
+    /* flex-basis: 35%; */
     width: 50vw;
     height: 50vw;
     margin-right: 5px;
@@ -58,13 +55,15 @@
 
   #enemy-map {
     bottom: -65vh;
-    flex-basis: 0;
+    flex-basis: 5%;
     margin-top: 0;
+    visibility: hidden;
   }
   #enemy-map.mobile.game {
     flex-basis: 65%;
     width: 80vw;
     margin-top: 0;
+    visibility: visible;
     transform: translateY(-65vh);
   }
 
@@ -155,5 +154,7 @@
     margin: 0;
   }
 
-
+  .stats-board {
+    position: absolute;
+  }
 }

@@ -1,8 +1,8 @@
 #ship-placement-overlay {
-  max-height: clamp(300px, 50vh, 750px);
+  max-height: 750px;
+  min-height: 350px;
+  max-width: 450px;
   grid-area: 5 / 1 / 17 / 6;
-  display: flex;
-  flex-direction: column;
   position: relative;
   left: 100%;
   transition: all, 2s;
@@ -18,42 +18,49 @@
 }
 
 #ship-overlay-header {
-  font-size: 3.6rem;
+  font-size: clamp(1.75rem, 2.5vw, 3.6rem);
+  font-weight: 700;
+  margin: 2vh auto 1vh;
 }
 
 #ship-axis-div {
-  width: fit-content;
+  position: relative;
+  bottom: -1.5vh;
   display: flex;
-  gap: 15px;
   align-items: center;
-  font-size: 1.8rem;
-  font-weight: 700;
-  margin: 1.5em auto 1em;
+  justify-content: center;
+  gap: 0.1vw;
+}
+
+#ship-axis-header {
+  font-size: clamp(1.2rem, 1.5vw, 2.4rem);
+  font-weight: 600;
 }
 
 #axis-drop-down-container {
   position: relative;
 }
 
+#axis-selected {
+  margin: 1vh 1vw;
+}
+
 #axis-drop-down-list {
-  height: 0;
-  width: 100px;
-  background-color: var(--overlay2);
+  visibility: hidden;
   position: absolute;
-  top: 1em;
-  list-style: none;
-  text-align: center;
-  margin: 0;
-  padding: 0;
+  inset: 50% 0 0;
+  height: 0;
+  width: 80%;
+  margin: 0 auto;
+  background-color: var(--overlay2);
   border: 1px solid var(--red);
-  border-top: none;
   border-radius: 0 0 10px 10px;
   transition: all, 250ms;
-  opacity: 0;
   pointer-events: none;
 }
 
 #axis-drop-down-list.expanded {
+  visibility: visible;
   height: fit-content;
   transform: translateY(15px);
   opacity: 100;
@@ -85,45 +92,44 @@
 }
 
 #ship-overlay-ship-container {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  margin: 0 auto 10px;
+  margin: 2vh auto 1vh;
+  height: 60%;
+  width: 95%;
 }
 
 .overlay-ship {
+  height: calc(20% - 1vh);
   width: 90%;
-  margin: auto 25px;
+  margin: 1vh auto;
   display: flex;
-  gap: 5px;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .overlay-ship-text {
-  font-size: 2rem;
-  text-align: left;
-  flex-basis: 25%;
+  flex: 2;
+  font-size: clamp(1.2rem, 1.5vw, 2.4rem);
+  font-weight: 600;
+  text-align: start;
 }
 
 .temp-ship-img {
-  width: 100%;
-  background: white;
-  flex-basis: 75%;
-  transition: all, 200ms;
-}
-
-.temp-ship-img.hidden {
-  display: none;
-}
-
-.temp-ship-img:hover {
-  scale: 1.1;
-}
-
-.temp-ship-img.selected {
-  scale: 0.92;
+  flex: 3;
+  height: 75%;
+  background-color: white;
 }
 
 #placer-btn {
-  margin: auto auto 25px;
+  margin: 1vh auto 0;
 }
+
+  /* height: 0; */
+  /* width: 100px; */
+  /* position: absolute; */
+  /* top: 1em; */
+  /* list-style: none; */
+  /* text-align: center; */
+  /* margin: 0; */
+  /* padding: 0; */
+  /* border-top: none; */
+  /* opacity: 0; */
