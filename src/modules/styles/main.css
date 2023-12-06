@@ -69,7 +69,7 @@ table {
 }
 
 #gameboard-container {
-  flex: 3;
+  flex: 2;
   margin: auto 25px auto auto;
   display: flex;
   justify-content: flex-end;

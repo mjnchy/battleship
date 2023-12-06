@@ -24,37 +24,45 @@
 }
 
 #ship-axis-div {
-  position: relative;
-  bottom: -1.5vh;
+  width: 50%;
+  margin: 3vh auto 1vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.1vw;
+  gap: clamp(10px, 1vw, 30px);
+  overflow: visible;
 }
 
 #ship-axis-header {
+  flex: 1;
   font-size: clamp(1.2rem, 1.5vw, 2.4rem);
   font-weight: 600;
 }
 
-#axis-drop-down-container {
+#axis-selected-btn {
+  flex: 3;
+  height: 2.5vh;
+  padding: 0;
   position: relative;
+  overflow: visible;
 }
 
-#axis-selected {
-  margin: 1vh 1vw;
+#axis-selected, .axis-drop-down-item {
+  font-weight: 400;
+  height: clamp(25px, 2vh, 50px);
+  line-height: 2;
 }
 
 #axis-drop-down-list {
   visibility: hidden;
   position: absolute;
-  inset: 50% 0 0;
   height: 0;
-  width: 80%;
-  margin: 0 auto;
-  background-color: var(--overlay2);
-  border: 1px solid var(--red);
+  width: calc(100% + 2px);
+  top: 50%;
+  left: -1px;
+  border: none;
   border-radius: 0 0 10px 10px;
+  background-color: var(--overlay2);
   transition: all, 250ms;
   pointer-events: none;
 }
@@ -62,28 +70,14 @@
 #axis-drop-down-list.expanded {
   visibility: visible;
   height: fit-content;
-  transform: translateY(15px);
-  opacity: 100;
+  transform: translateY(15%);
   pointer-events: all;
-  scale: 1.1;
-}
-
-.axis-drop-down-item {
-  font-weight: 400;
-  padding: 5px 0;
+  border: 1px solid var(--red);
 }
 
 .axis-drop-down-item:hover {
   background-color: var(--background-highlight);
   cursor: pointer;
-}
-
-.axis-drop-down-item:nth-of-type(1) {
-  border-bottom: 1px solid var(--red);
-}
-
-.axis-drop-down-item:nth-of-type(2) {
-  border-radius: 0 0 10px 10px;
 }
 
 .axis-drop-down-item.current {
@@ -92,7 +86,7 @@
 }
 
 #ship-overlay-ship-container {
-  margin: 2vh auto 1vh;
+  margin: 0.5vh auto 1vh;
   height: 60%;
   width: 95%;
 }
@@ -104,6 +98,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  overflow: visible;
 }
 
 .overlay-ship-text {
@@ -114,13 +109,23 @@
 }
 
 .temp-ship-img {
-  flex: 3;
+  flex: 4;
   height: 75%;
   background-color: white;
+  transition: all, 250ms;
 }
 
 #placer-btn {
   margin: 1vh auto 0;
+}
+
+.temp-ship-img:hover {
+  scale: 1.1;
+  cursor: pointer;
+}
+
+.temp-ship-img.selected {
+  scale: 0.92;
 }
 
   /* height: 0; */
