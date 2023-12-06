@@ -48,7 +48,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 2vh auto;
+  margin: clamp(5px, 1vh, 50px) auto;
 }
 
 .fleet-ship-header {

@@ -11,6 +11,7 @@ function getInteractables () {
     playerMap: document.querySelector("#player-map"),
     playerGrid: [...document.querySelectorAll("#player-map>.cell")],
     axisSelected: document.querySelector("#axis-selected"),
+    axisBtn: document.querySelector("#axis-selected-btn"),
     axisList: document.querySelector("#axis-drop-down-list"),
     axisOptions: [...document.querySelectorAll(".axis-drop-down-item")],
     shipsOnDeck: [...document.querySelectorAll(".temp-ship-img")],
@@ -152,7 +153,7 @@ function interact () {
     externalMenuCollapse(target);
 
     switch (true) {
-      case target == interactables.axisSelected:
+      case target == interactables.axisSelected || target == interactables.axisBtn:
         toggleAxisMenu(interactables.axisList, interactables.axisSelected); 
         break;
 
