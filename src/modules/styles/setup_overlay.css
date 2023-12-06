@@ -41,7 +41,6 @@
 
 #axis-selected-btn {
   flex: 3;
-  height: 2.5vh;
   padding: 0;
   position: relative;
   overflow: visible;
@@ -56,23 +55,24 @@
 #axis-drop-down-list {
   visibility: hidden;
   position: absolute;
-  height: 0;
+  height: fit-content;
   width: calc(100% + 2px);
-  top: 50%;
   left: -1px;
   border: none;
   border-radius: 0 0 10px 10px;
   background-color: var(--overlay2);
   transition: all, 250ms;
   pointer-events: none;
+  opacity: 0;
+  transform: translateY(-65%);
 }
 
 #axis-drop-down-list.expanded {
   visibility: visible;
-  height: fit-content;
-  transform: translateY(15%);
+  transform: translateY(-5%);
   pointer-events: all;
   border: 1px solid var(--red);
+  opacity: 100;
 }
 
 .axis-drop-down-item:hover {
@@ -127,14 +127,3 @@
 .temp-ship-img.selected {
   scale: 0.92;
 }
-
-  /* height: 0; */
-  /* width: 100px; */
-  /* position: absolute; */
-  /* top: 1em; */
-  /* list-style: none; */
-  /* text-align: center; */
-  /* margin: 0; */
-  /* padding: 0; */
-  /* border-top: none; */
-  /* opacity: 0; */

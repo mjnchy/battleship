@@ -69,14 +69,14 @@ table {
 }
 
 #gameboard-container {
-  flex: 2;
+  flex: 5;
   margin: auto 25px auto auto;
   display: flex;
   justify-content: flex-end;
 }
 
 #sidebar-grid {
-  flex: 1;
+  flex: 2;
   display: grid;
   grid-template: repeat(20, 1fr) / repeat(5, 1fr);
 }
