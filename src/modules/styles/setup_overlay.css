@@ -44,6 +44,11 @@
   padding: 0;
   position: relative;
   overflow: visible;
+  z-index: 1;
+}
+
+#axis-selected-btn:focus {
+  border-radius: 10px 10px 0 0;
 }
 
 #axis-selected, .axis-drop-down-item {

@@ -1,9 +1,10 @@
 .stats-board {
+  width: clamp(200px, 25vw, 400px);
   background-color: var(--overlay1);
   border-radius: 10px;
   transition: all, 1.5s;  
   position: relative;
-  right: 50px;
+  right: clamp(20px, 1vw, 50px);
   visibility: hidden;
 }
 

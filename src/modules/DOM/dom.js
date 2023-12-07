@@ -147,6 +147,14 @@ function setShipParameters (ship, arr, length) {
   shipParameters[ship] = { ship, arr, length };
 };
 
+function mouseEnter (e) {
+  updateShipOnMap(e, "highlight", true, false);
+};
+
+function mouseLeave (e) {
+  updateShipOnMap(e, "highlight", false, false);
+};
+
 function interact () {
   window.addEventListener("click", e => {
     const target = e.target;
@@ -170,8 +178,8 @@ function interact () {
 
   interactables.playerMap.addEventListener("click", updateShipOnMap);
   interactables.playerGrid.forEach(cell => {
-    cell.addEventListener("mouseenter", e => updateShipOnMap(e, "highlight", true, false));
-    cell.addEventListener("mouseleave", e => updateShipOnMap(e, "highlight", false, false));
+    cell.addEventListener("mouseenter", mouseEnter);
+    cell.addEventListener("mouseleave", mouseLeave);
   });
 };
 
