@@ -59,7 +59,7 @@ function toggleAxisMenu (menu, button) {
 
 function externalMenuCollapse (element) {
   if (!interactables.axisList.classList.contains("expanded")) return;
-  if (element != interactables.axisSelected && element != interactables.axisOptions[0] && element != interactables.axisOptions[1])
+  if (element != interactables.axisBtn && element != interactables.axisSelected && !interactables.axisOptions.includes(element))
   interactables.axisList.classList.toggle("expanded");
 };
 
@@ -73,13 +73,14 @@ function deselect (target) {
   selected? selected.classList.remove("selected"): null;
 };
 
-function selectAxis (element, button, list) {
+function selectAxis (element, val, button, list) {
   const otherOption = element.nextElementSibling? element.nextElementSibling: element.previousElementSibling;
   element.classList.add("current");
   otherOption.classList.remove("current");
   
-  button.dataset.value = element.dataset.value;
-  button.textContent = element.textContent;
+  val.dataset.value = element.dataset.value;
+  val.textContent = element.textContent;
+  button.blur();
   list.classList.toggle("expanded");
 };
 
@@ -154,11 +155,11 @@ function interact () {
 
     switch (true) {
       case target == interactables.axisSelected || target == interactables.axisBtn:
-        toggleAxisMenu(interactables.axisList, interactables.axisSelected); 
+        toggleAxisMenu(interactables.axisList, interactables.axisBtn); 
         break;
 
       case interactables.axisOptions.includes(target):
-        selectAxis(target, interactables.axisSelected, interactables.axisList);
+        selectAxis(target, interactables.axisSelected, interactables.axisBtn, interactables.axisList);
         break;
 
       case interactables.shipsOnDeck.includes(target):
