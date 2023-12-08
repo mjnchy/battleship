@@ -10,6 +10,8 @@ function getInteractables () {
   return Object.freeze({
     playerMap: document.querySelector("#player-map"),
     playerGrid: [...document.querySelectorAll("#player-map>.cell")],
+    enemyMap: document.querySelector("#enemy-map"),
+    enemyGrid: [...document.querySelectorAll("#enemy-map>.cell")],
     axisSelected: document.querySelector("#axis-selected"),
     axisBtn: document.querySelector("#axis-selected-btn"),
     axisList: document.querySelector("#axis-drop-down-list"),
@@ -130,7 +132,7 @@ function updateShipOnMap (ev, className = "mark", addClass = true, postAlert = t
 };
 
 function getArr (identifier, axis, length) {
-  const x = Math.floor(identifier/10), y = identifier%10, halfLength = Math.floor(length/2), arr = [];
+  const cor  = getCor(identifier), x = cor[0], y = cor[1], halfLength = Math.floor(length/2), arr = [];
 
   let start = axis == "vertical"? x - halfLength: y - halfLength;
   if (start < 0) start = 0;
@@ -143,6 +145,11 @@ function getArr (identifier, axis, length) {
   return arr;
 };
 
+function getCor (identifier) {
+  const parsedIdentifier = parseInt(identifier);
+  return [ Math.floor(parsedIdentifier/10), parsedIdentifier%10 ];
+};
+
 function setShipParameters (ship, arr, length) {
   shipParameters[ship] = { ship, arr, length };
 };
@@ -153,6 +160,14 @@ function mouseEnter (e) {
 
 function mouseLeave (e) {
   updateShipOnMap(e, "highlight", false, false);
+};
+
+function highlightAtkCor (e, addClass = true) {
+  addClass == true? e.target.classList.add("enemy-highlight"): e.target.classList.remove("enemy-highlight");
+};
+
+function removeHighlightFromAtkCor (e) {
+  highlightAtkCor(e, false);
 };
 
 function interact () {
@@ -183,4 +198,17 @@ function interact () {
   });
 };
 
-export { shipParameters, interactables, drawBoards, toggleSetupPrompt, interact, setupStatBoards };
+function initializeGame () {
+  interactables.playerMap.removeEventListener("click", updateShipOnMap);
+  interactables.playerGrid.forEach(cell => {
+    cell.removeEventListener("mouseenter", mouseEnter);
+    cell.removeEventListener("mouseleave", mouseLeave);
+  });
+
+  interactables.enemyGrid.forEach(cell => {
+    cell.addEventListener("mouseenter", highlightAtkCor);
+    cell.addEventListener("mouseleave", removeHighlightFromAtkCor);
+  });
+};
+
+export { shipParameters, interactables, drawBoards, toggleSetupPrompt, getCor, interact, setupStatBoards, initializeGame };
