@@ -11,17 +11,23 @@ function genRandAxis () {
   return axis[Math.floor(Math.random() * 2)];
 };
 
+function checkCorForShip (map, arr) {
+  return arr.some(cor => map[cor[0]][cor[1]].ship)
+};
+
 function placeShipsOnEnemyBoard (map, cb) {
   let initialLength = 0, maxLength = 5;
 
   while(initialLength < maxLength) {
-    let ship = ships[initialLength], length = (maxLength - initialLength), axis = genRandAxis(), arr = getArr(genRandIdentifier(), axis, length), corHasShip = arr.some(cor => map[cor[0]][cor[1]].ship);
+    let ship = ships[initialLength], length = (maxLength - initialLength), axis = genRandAxis(), arr = getArr(genRandIdentifier(), axis, length), corHasShip = checkCorForShip(map, arr);
 
-    if (corHasShip == false) {
-      console.log(ship, arr, length);
-      cb({ ship, arr, length });
-      initialLength++;
+    while(corHasShip == true) {
+      arr = getArr(genRandIdentifier(), axis, length);
+      corHasShip = checkCorForShip(map, arr);
     };
+
+    cb({ ship, arr, length });
+    initialLength++;
   }
 };
 
