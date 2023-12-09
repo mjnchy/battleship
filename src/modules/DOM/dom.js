@@ -211,4 +211,4 @@ function initializeGame () {
   });
 };
 
-export { shipParameters, interactables, drawBoards, toggleSetupPrompt, getCor, interact, setupStatBoards, initializeGame };
+export { shipParameters, interactables, drawBoards, toggleSetupPrompt, getArr, getCor, interact, setupStatBoards, initializeGame };

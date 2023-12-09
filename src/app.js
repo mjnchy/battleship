@@ -1,6 +1,7 @@
 import "./modules/styles/styles.js";
 import { Player } from "./modules/player/player.js";
 import { shipParameters, drawBoards, toggleSetupPrompt, interact, interactables, getCor, setupStatBoards, initializeGame } from "./modules/DOM/dom.js";
+import { placeShipsOnEnemyBoard } from "./modules/gameai/gameai.js";
 
 window.onload = () => {
   const player1 = Player("player1");
@@ -19,6 +20,7 @@ window.onload = () => {
       toggleSetupPrompt();
       setupStatBoards();
       initializeGame();
+      placeShipsOnEnemyBoard(player2.map.grid, player2.placeShip);
     };
   };
 
