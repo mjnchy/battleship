@@ -146,8 +146,7 @@ function getArr (identifier, axis, length) {
 };
 
 function getCor (identifier) {
-  const parsedIdentifier = parseInt(identifier);
-  return [ Math.floor(parsedIdentifier/10), parsedIdentifier%10 ];
+  return [ Math.floor(identifier/10), identifier%10 ];
 };
 
 function setShipParameters (ship, arr, length) {
@@ -168,6 +167,18 @@ function highlightAtkCor (e, addClass = true) {
 
 function removeHighlightFromAtkCor (e) {
   highlightAtkCor(e, false);
+};
+
+function markAndDisableAttackedCor (target, identifier, arr) {
+  const marker = document.createElement("div");
+
+  marker.id = `cell-${identifier}-marker`;
+  marker.classList.add("attacked");
+  target.classList.remove("enemy-highlight");
+  target.appendChild(marker);
+  target.removeEventListener("mouseenter", highlightAtkCor);
+  target.removeEventListener("mouseleave", removeHighlightFromAtkCor);
+  arr.push(identifier);
 };
 
 function interact () {
@@ -211,4 +222,4 @@ function initializeGame () {
   });
 };
 
-export { shipParameters, interactables, drawBoards, toggleSetupPrompt, getArr, getCor, interact, setupStatBoards, initializeGame };
+export { shipParameters, interactables, drawBoards, toggleSetupPrompt, getArr, getCor, interact, setupStatBoards, initializeGame, markAndDisableAttackedCor, };

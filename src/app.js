@@ -1,57 +1,59 @@
 import "./modules/styles/styles.js";
 import { Player } from "./modules/player/player.js";
-import { shipParameters, drawBoards, toggleSetupPrompt, interact, interactables, getCor, setupStatBoards, initializeGame } from "./modules/DOM/dom.js";
+import { shipParameters, drawBoards, toggleSetupPrompt, interact, interactables, getCor, setupStatBoards, initializeGame, markAndDisableAttackedCor } from "./modules/DOM/dom.js";
 import { getValidAttackCor, placeShipsOnEnemyBoard } from "./modules/gameai/gameai.js";
 
+const attackedIdentifiers = [];
+let player1, player2, currentPlayer;
+
 window.onload = () => {
-  const player1 = Player("player1"), player2 = Player("player2");
-  let currentPlayer = "player1";
-
-  initializePreGame(player1);
-
-  function placeShips () {
-    shipPlacer(player1, player2);
-  };
-
-  function attack (e) {
-    playerAttack(e, player1, player2, currentPlayer);
-    currentPlayer = "player2";
-    computerAttack(player1, player2, currentPlayer);
-    currentPlayer = "player1";
-  };
-
-  interactables.shipPlacer.addEventListener("click", placeShips);
-  interactables.enemyMap.addEventListener("click",  attack);
+  player1 = Player("player1"); player2 = Player("player2"); currentPlayer = player1;
+  initializePlacements();
+  initializeAttacks();
 };
 
-function initializePreGame (player1) {
+function initializePlacements () {
   drawBoards([[player1.map.grid, "player-map"], [player1.enemyMap.grid, "enemy-map"]]);
   toggleSetupPrompt();
   interact();
+  interactables.shipPlacer.addEventListener("click", placeShips);
 };
 
-function shipPlacer(player, enemy) {
+function placeShips () {
   Object.keys(shipParameters).forEach(ship => {
-    player.placeShip(shipParameters[ship]);
+    player1.placeShip(shipParameters[ship]);
     const element = document.querySelector(`.temp-ship-img[data-name="${ship}"]`);
     element.parentElement.removeChild(element);
     delete(shipParameters[ship]);
   });
-  if (player.ships.length == 5) {
+  if (player1.ships.length == 5) {
     toggleSetupPrompt();
     setupStatBoards();
     initializeGame();
-    placeShipsOnEnemyBoard(enemy.map.grid, enemy.placeShip);
+    placeShipsOnEnemyBoard(player2.map.grid, player2.placeShip);
   };
 };
 
-function playerAttack (e, player, enemy, currentPlayer) {
-  if (currentPlayer != "player1") return;
-  const cor = getCor(e.target.dataset.identifier);
-  player.attack(enemy, ...cor);
+function attack (e) {
+  const target = e.target, identifier = parseInt(target.dataset.identifier);
+  if (currentPlayer != player1 || target.classList.contains("attacked") || attackedIdentifiers.includes(identifier)) return;
+
+  player1.attack(player2, ...getCor(identifier));
+  markAndDisableAttackedCor(target, identifier, attackedIdentifiers);
+  switchPlayer();
+  computerAttack();
 };
 
-function computerAttack (player, computer, currentPlayer) {
-  if (currentPlayer != "player2") return;
-  computer.attack(player, ...getValidAttackCor());
+function computerAttack () {
+  if (currentPlayer != player2) return;
+  player2.attack(player1, ...getValidAttackCor());
+  switchPlayer();
+};
+
+function switchPlayer () {
+  currentPlayer = currentPlayer == player1? player2: player1;
+};
+
+function initializeAttacks () {
+  interactables.enemyMap.addEventListener("click",  attack);
 };
