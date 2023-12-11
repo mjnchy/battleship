@@ -1,6 +1,6 @@
-import { getArr } from "../DOM/dom";
+import { getArr, getCor } from "../DOM/dom";
 
-const ships = [ "carrier", "battleship", "destroyer", "submarine", "patrolboat"];
+const attackedIdentifiers = [];
 
 function genRandIdentifier () {
   return Math.floor(Math.random() * 100);
@@ -16,6 +16,7 @@ function checkCorForShip (map, arr) {
 };
 
 function placeShipsOnEnemyBoard (map, cb) {
+  const ships = [ "carrier", "battleship", "destroyer", "submarine", "patrolboat"];
   let initialLength = 0, maxLength = 5;
 
   while(initialLength < maxLength) {
@@ -31,4 +32,11 @@ function placeShipsOnEnemyBoard (map, cb) {
   }
 };
 
-export { placeShipsOnEnemyBoard };
+function getValidAttackCor () {
+  const identifier = genRandIdentifier();
+  while (attackedIdentifiers.includes(identifier)) identifier = genRandIdentifier();
+
+  return getCor(identifier);
+};
+
+export { placeShipsOnEnemyBoard, getValidAttackCor };

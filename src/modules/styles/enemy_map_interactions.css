@@ -1,4 +1,4 @@
 .enemy-highlight {
-  background: blue;
+  background: var(--maroon);
   opacity: 0.5;
 }

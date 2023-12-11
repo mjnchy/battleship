@@ -108,7 +108,7 @@ table {
 }
 
 #enemy-map, #enemy-map > .cell {
-  border: 1px solid var(--maroon);
+  border: 1px solid var(--red);
 }
 
 .cell {
