@@ -32,11 +32,12 @@ function placeShipsOnEnemyBoard (map, cb) {
   }
 };
 
-function getValidAttackCor () {
-  const identifier = genRandIdentifier();
+function getValidAttackParameters () {
+  let identifier = genRandIdentifier();
   while (attackedIdentifiers.includes(identifier)) identifier = genRandIdentifier();
+  attackedIdentifiers.push(identifier);
 
-  return getCor(identifier);
+  return { identifier, cor: getCor(identifier)};
 };
 
-export { placeShipsOnEnemyBoard, getValidAttackCor };
+export { placeShipsOnEnemyBoard, getValidAttackParameters };

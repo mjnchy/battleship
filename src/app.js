@@ -1,9 +1,8 @@
 import "./modules/styles/styles.js";
 import { Player } from "./modules/player/player.js";
-import { shipParameters, drawBoards, toggleSetupPrompt, interact, interactables, getCor, setupStatBoards, initializeGame, markAndDisableAttackedCor } from "./modules/DOM/dom.js";
-import { getValidAttackCor, placeShipsOnEnemyBoard } from "./modules/gameai/gameai.js";
+import { shipParameters, drawBoards, toggleSetupPrompt, interact, interactables, getCor, setupStatBoards, initializeGame, updateAttackedCor } from "./modules/DOM/dom.js";
+import { getValidAttackParameters, placeShipsOnEnemyBoard } from "./modules/gameai/gameai.js";
 
-const attackedIdentifiers = [];
 let player1, player2, currentPlayer;
 
 window.onload = () => {
@@ -35,18 +34,23 @@ function placeShips () {
 };
 
 function attack (e) {
-  const target = e.target, identifier = parseInt(target.dataset.identifier);
-  if (currentPlayer != player1 || target.classList.contains("attacked") || attackedIdentifiers.includes(identifier)) return;
+  const target = e.target, identifier = parseInt(target.dataset.identifier), cor = getCor(identifier);
+  if (currentPlayer != player1 || target.classList.contains("attacked") || player2.isAttacked(...cor)) return;
 
-  player1.attack(player2, ...getCor(identifier));
-  markAndDisableAttackedCor(target, identifier, attackedIdentifiers);
+  interactables.enemyMap.classList.add("disabled");
+  player1.attack(player2, ...cor);
+  updateAttackedCor("player", target, identifier);
   switchPlayer();
-  computerAttack();
+  setTimeout(() => computerAttack(), 750);
 };
 
 function computerAttack () {
-  if (currentPlayer != player2) return;
-  player2.attack(player1, ...getValidAttackCor());
+  const attackParams = getValidAttackParameters(), target = document.querySelector(`#player-map>.cell[data-identifier="${attackParams.identifier}"]`);
+  if (currentPlayer != player2 || player1.isAttacked(...attackParams.cor)) return;
+
+  interactables.enemyMap.classList.remove("disabled");
+  player2.attack(player1, ...attackParams.cor);
+  updateAttackedCor("computer", target, attackParams.identifier);
   switchPlayer();
 };
 

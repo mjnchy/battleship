@@ -169,16 +169,18 @@ function removeHighlightFromAtkCor (e) {
   highlightAtkCor(e, false);
 };
 
-function markAndDisableAttackedCor (target, identifier, arr) {
+function updateAttackedCor (attacker, target, identifier) {
   const marker = document.createElement("div");
-
   marker.id = `cell-${identifier}-marker`;
   marker.classList.add("attacked");
-  target.classList.remove("enemy-highlight");
+
+  if (attacker == "player") {
+    target.classList.remove("enemy-highlight");
+    target.removeEventListener("mouseenter", highlightAtkCor);
+    target.removeEventListener("mouseleave", removeHighlightFromAtkCor);
+  };
+
   target.appendChild(marker);
-  target.removeEventListener("mouseenter", highlightAtkCor);
-  target.removeEventListener("mouseleave", removeHighlightFromAtkCor);
-  arr.push(identifier);
 };
 
 function interact () {
@@ -222,4 +224,4 @@ function initializeGame () {
   });
 };
 
-export { shipParameters, interactables, drawBoards, toggleSetupPrompt, getArr, getCor, interact, setupStatBoards, initializeGame, markAndDisableAttackedCor, };
+export { shipParameters, interactables, drawBoards, toggleSetupPrompt, getArr, getCor, interact, setupStatBoards, initializeGame, updateAttackedCor };

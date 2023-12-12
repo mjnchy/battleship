@@ -1,0 +1,17 @@
+#player-map, #player-map > .cell {
+  border: 1px solid var(--mauve);
+}
+
+#player-map > .cell.highlight {
+  opacity: 0.5;
+  background-color: white;
+}
+
+#player-map > .cell.mark {
+  opacity: 1;
+  background-color: red;
+}
+
+#player-map>.cell>.attacked {
+  background: var(--mauve);
+}

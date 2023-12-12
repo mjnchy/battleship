@@ -93,22 +93,11 @@ table {
   margin-inline: 5%;
 }
 
-#player-map, #player-map > .cell {
-  border: 1px solid var(--mauve);
-}
-
-#player-map > .cell.highlight {
-  opacity: 0.5;
-  background-color: white;
-}
-
-#player-map > .cell.mark {
-  opacity: 1;
-  background-color: red;
-}
-
-#enemy-map, #enemy-map > .cell {
-  border: 1px solid var(--red);
+.board>.cell>.attacked {
+  width: 75%;
+  height: 75%;
+  margin: 12.5% auto;
+  border-radius: 50%;
 }
 
 .cell {
@@ -134,4 +123,8 @@ table {
 
 .btn:focus {
   scale: 1.1;
+}
+
+.disabled {
+  pointer-events: none;
 }

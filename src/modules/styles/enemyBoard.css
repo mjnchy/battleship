@@ -1,12 +1,12 @@
+#enemy-map, #enemy-map > .cell {
+  border: 1px solid var(--red);
+}
+
 .enemy-highlight {
   background: var(--maroon);
   opacity: 0.5;
 }
 
 #enemy-map>.cell>.attacked {
-  width: 75%;
-  height: 75%;
-  margin: 12.5% auto;
   background: var(--maroon);
-  border-radius: 50%;
 }
