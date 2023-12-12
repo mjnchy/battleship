@@ -169,7 +169,7 @@ function removeHighlightFromAtkCor (e) {
   highlightAtkCor(e, false);
 };
 
-function updateAttackedCor (attacker, target, identifier) {
+function updateAttackedCor (attacker, target, identifier, shipHit) {
   const marker = document.createElement("div");
   marker.id = `cell-${identifier}-marker`;
   marker.classList.add("attacked");
@@ -179,6 +179,8 @@ function updateAttackedCor (attacker, target, identifier) {
     target.removeEventListener("mouseenter", highlightAtkCor);
     target.removeEventListener("mouseleave", removeHighlightFromAtkCor);
   };
+
+  shipHit == true? target.classList.add("ship-hit"): null;
 
   target.appendChild(marker);
 };

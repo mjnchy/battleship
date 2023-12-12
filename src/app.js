@@ -39,18 +39,21 @@ function attack (e) {
 
   interactables.enemyMap.classList.add("disabled");
   player1.attack(player2, ...cor);
-  updateAttackedCor("player", target, identifier);
+  updateAttackedCor("player", target, identifier, player2.map.grid[cor[0]][cor[1]].ship != null);
   switchPlayer();
   setTimeout(() => computerAttack(), 750);
 };
 
 function computerAttack () {
-  const attackParams = getValidAttackParameters(), target = document.querySelector(`#player-map>.cell[data-identifier="${attackParams.identifier}"]`);
-  if (currentPlayer != player2 || player1.isAttacked(...attackParams.cor)) return;
+  if (currentPlayer != player2) return;
 
+  let attackParams = getValidAttackParameters();
+  while (player1.isAttacked(...attackParams.cor)) attackParams = getValidAttackParameters();
+
+  const target = document.querySelector(`#player-map>.cell[data-identifier="${attackParams.identifier}"]`);
   interactables.enemyMap.classList.remove("disabled");
   player2.attack(player1, ...attackParams.cor);
-  updateAttackedCor("computer", target, attackParams.identifier);
+  updateAttackedCor("computer", target, attackParams.identifier, player1.map.grid[attackParams.cor[0]][attackParams.cor[1]].ship != null);
   switchPlayer();
 };
 

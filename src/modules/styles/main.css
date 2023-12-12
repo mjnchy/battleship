@@ -101,7 +101,29 @@ table {
 }
 
 .cell {
+  position: relative;
   padding: 5px;
+}
+
+
+.board>.cell.ship-hit::before, .board>.cell.ship-hit::after {
+  content: "";
+  position: absolute;
+  height: 142%;
+  width: 142%;
+}
+
+.board>.cell.ship-hit::before {
+  border-left: 2px solid white;
+  transform: rotate(45deg);
+  left: 27.5%;
+  top: 30%;
+}
+.board>.cell.ship-hit::after {
+  border-right: 2px solid white;
+  transform: rotate(-45deg);
+  right: 27%;
+  top: 30%;
 }
 
 .btn {

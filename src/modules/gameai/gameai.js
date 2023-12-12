@@ -1,7 +1,5 @@
 import { getArr, getCor } from "../DOM/dom";
 
-const attackedIdentifiers = [];
-
 function genRandIdentifier () {
   return Math.floor(Math.random() * 100);
 };
@@ -34,9 +32,6 @@ function placeShipsOnEnemyBoard (map, cb) {
 
 function getValidAttackParameters () {
   let identifier = genRandIdentifier();
-  while (attackedIdentifiers.includes(identifier)) identifier = genRandIdentifier();
-  attackedIdentifiers.push(identifier);
-
   return { identifier, cor: getCor(identifier)};
 };
 

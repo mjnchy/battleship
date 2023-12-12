@@ -2,6 +2,10 @@
   border: 1px solid var(--red);
 }
 
+#enemy-map>.cell.ship-hit {
+  background: var(--red-hit);
+}
+
 .enemy-highlight {
   background: var(--maroon);
   opacity: 0.5;
