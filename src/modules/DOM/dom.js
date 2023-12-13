@@ -180,6 +180,7 @@ function updateAttackedCor (attacker, target, identifier, shipHit) {
     target.removeEventListener("mouseleave", removeHighlightFromAtkCor);
   };
 
+  target.classList.remove("mark");
   shipHit == true? target.classList.add("ship-hit"): null;
 
   target.appendChild(marker);
