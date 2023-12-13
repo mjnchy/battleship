@@ -107,28 +107,39 @@
 }
 
 .overlay-ship-text {
-  flex: 2;
+  flex: 1;
   font-size: clamp(1.2rem, 1.5vw, 2.4rem);
   font-weight: 600;
   text-align: start;
 }
 
-.temp-ship-img {
-  flex: 4;
+.ship {
+  flex: 2;
+  width: fit-content;
   height: 75%;
-  background-color: white;
+  display: flex;
+  justify-content: center;
+  overflow: visible;
   transition: all, 250ms;
+}
+
+.ship-piece {
+  width: calc(20% - 0.5px);
+  aspect-ratio: 1 / 1;
+  margin: auto 0.5px;
+  pointer-events: none;
+  background: var(--mauve);
 }
 
 #placer-btn {
   margin: 1vh auto 0;
 }
 
-.temp-ship-img:hover {
+.ship:hover {
   scale: 1.1;
   cursor: pointer;
 }
 
-.temp-ship-img.selected {
+.ship.selected {
   scale: 0.92;
 }

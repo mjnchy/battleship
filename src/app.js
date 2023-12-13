@@ -41,7 +41,7 @@ function attack (e) {
   player1.attack(player2, ...cor);
   updateAttackedCor("player", target, identifier, player2.map.grid[cor[0]][cor[1]].ship != null);
   switchPlayer();
-  setTimeout(() => computerAttack(), 750);
+  setTimeout(() => computerAttack(), 475);
 };
 
 function computerAttack () {
@@ -51,9 +51,9 @@ function computerAttack () {
   while (player1.isAttacked(...attackParams.cor)) attackParams = getValidAttackParameters();
 
   const target = document.querySelector(`#player-map>.cell[data-identifier="${attackParams.identifier}"]`);
-  interactables.enemyMap.classList.remove("disabled");
   player2.attack(player1, ...attackParams.cor);
   updateAttackedCor("computer", target, attackParams.identifier, player1.map.grid[attackParams.cor[0]][attackParams.cor[1]].ship != null);
+  setTimeout(() => interactables.enemyMap.classList.remove("disabled"), 275);
   switchPlayer();
 };
 
