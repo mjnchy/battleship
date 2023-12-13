@@ -16,7 +16,7 @@ function getInteractables () {
     axisBtn: document.querySelector("#axis-selected-btn"),
     axisList: document.querySelector("#axis-drop-down-list"),
     axisOptions: [...document.querySelectorAll(".axis-drop-down-item")],
-    shipsOnDeck: [...document.querySelectorAll(".temp-ship-img")],
+    shipsOnDeck: [...document.querySelectorAll(".ship")],
     shipPlacer: document.querySelector("#placer-btn"),
   });
 };
@@ -69,7 +69,7 @@ function deselect (target) {
   const exceptions = [ interactables.playerMap, interactables.axisSelected, interactables.axisList,
     ...interactables.axisOptions, ...interactables.shipsOnDeck, ...interactables.playerGrid],
   exceptionMatched = exceptions.some(exception => exception == target), 
-  selected = document.querySelector(".temp-ship-img.selected");
+  selected = document.querySelector(".ship.selected");
 
   if (exceptionMatched == true) return;
   selected? selected.classList.remove("selected"): null;
@@ -87,7 +87,7 @@ function selectAxis (element, val, button, list) {
 };
 
 function selectShip (ship) {
-  document.querySelectorAll(".temp-ship-img.selected").forEach(selected => selected.classList.remove("selected"));
+  document.querySelectorAll(".ship.selected").forEach(selected => selected.classList.remove("selected"));
   ship.classList.add("selected");
 };
 

@@ -21,7 +21,7 @@ function initializePlacements () {
 function placeShips () {
   Object.keys(shipParameters).forEach(ship => {
     player1.placeShip(shipParameters[ship]);
-    const element = document.querySelector(`.temp-ship-img[data-name="${ship}"]`);
+    const element = document.querySelector(`.ship[data-name="${ship}"]`);
     element.parentElement.removeChild(element);
     delete(shipParameters[ship]);
   });

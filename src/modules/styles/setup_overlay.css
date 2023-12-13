@@ -113,22 +113,29 @@
   text-align: start;
 }
 
-.ship {
+.ship-container {
   flex: 2;
+  height: 100%;
+  overflow: visible;
+}
+
+.ship {
   width: fit-content;
   height: 75%;
+  margin: 6.25% auto;
   display: flex;
   justify-content: center;
-  overflow: visible;
   transition: all, 250ms;
+  flex-basis: content;
 }
 
 .ship-piece {
-  width: calc(20% - 0.5px);
+  width: clamp(3rem, 3.25vw, 5rem);
   aspect-ratio: 1 / 1;
-  margin: auto 0.5px;
+  margin: auto 1px;
   pointer-events: none;
-  background: var(--mauve);
+  background: var(--mauve-ship);
+  border-radius: 5px;
 }
 
 #placer-btn {
