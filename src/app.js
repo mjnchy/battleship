@@ -8,7 +8,6 @@ let player1, player2, currentPlayer;
 window.onload = () => {
   player1 = Player("player1"); player2 = Player("player2"); currentPlayer = player1;
   initializePlacements();
-  initializeAttacks();
 };
 
 function initializePlacements () {
@@ -30,6 +29,7 @@ function placeShips () {
     setupStatBoards();
     initializeGame();
     placeShipsOnEnemyBoard(player2.map.grid, player2.placeShip);
+    initializeAttacks();
   };
 };
 
@@ -37,15 +37,18 @@ function attack (e) {
   const target = e.target, identifier = parseInt(target.dataset.identifier), cor = getCor(identifier);
   if (currentPlayer != player1 || target.classList.contains("attacked") || player2.isAttacked(...cor)) return;
 
-  interactables.enemyMap.classList.add("disabled");
-  player1.attack(player2, ...cor);
+  const shipHit = player1.attack(player2, ...cor);
   updateAttackedCor("player", target, identifier, player2.map.grid[cor[0]][cor[1]].ship != null);
+
+  if (shipHit) return;
+
+  interactables.enemyMap.classList.add("disabled");
   switchPlayer();
   setTimeout(() => computerAttack(), 475);
 };
 
 function computerAttack () {
-  if (currentPlayer != player2) return;
+  if (currentPlayer != player2) return interactables.enemyMap.classList.remove("disabled");
 
   let attackParams = getValidAttackParameters();
   while (player1.isAttacked(...attackParams.cor)) attackParams = getValidAttackParameters();

@@ -23,10 +23,14 @@ function Gameboard () {
     },
 
     receiveAttack: (x, y) => {
+      let hit = false
       const target = map.grid[x][y];
       map.attacked[target.identifier] = true;
-      target.ship? target.ship.hit(): map.failed.push([x, y]);
       map.totalAtks++;
+      if (!target.ship) map.failed.push([x, y])
+      else { target.ship.hit(); hit = true; };
+
+      return hit;
     },
   };
 };

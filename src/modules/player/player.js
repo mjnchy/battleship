@@ -6,9 +6,10 @@ function Player (name) {
     name, ...player,
     attack: (enemy, x, y) => {
       const target = enemy.map.grid[x][y];
-      enemy.receiveAttack(x, y);
+      const status = enemy.receiveAttack(x, y);
       player.enemyMap.attacked[target.identifier] = true;
       player.enemyMap.totalAtks++;
+      return status;
     },
   };
 };
