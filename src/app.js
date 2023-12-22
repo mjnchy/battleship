@@ -42,26 +42,26 @@ function attack (e) {
 
   if (shipHit) return;
 
-  interactables.enemyMap.classList.add("disabled");
   switchPlayer();
-  setTimeout(() => computerAttack(), 475);
+  computerAttack();
 };
 
 function computerAttack () {
   if (currentPlayer != player2) return interactables.enemyMap.classList.remove("disabled");
+  setTimeout(() => {
+    let attackParams = getValidAttackParameters();
+    while (player1.isAttacked(...attackParams.cor)) attackParams = getValidAttackParameters();
 
-  let attackParams = getValidAttackParameters();
-  while (player1.isAttacked(...attackParams.cor)) attackParams = getValidAttackParameters();
-
-  const target = document.querySelector(`#player-map>.cell[data-identifier="${attackParams.identifier}"]`);
-  player2.attack(player1, ...attackParams.cor);
-  updateAttackedCor("computer", target, attackParams.identifier, player1.map.grid[attackParams.cor[0]][attackParams.cor[1]].ship != null);
-  setTimeout(() => interactables.enemyMap.classList.remove("disabled"), 275);
-  switchPlayer();
+    const target = document.querySelector(`#player-map>.cell[data-identifier="${attackParams.identifier}"]`);
+    let shipHit = player2.attack(player1, ...attackParams.cor);
+    updateAttackedCor("computer", target, attackParams.identifier, player1.map.grid[attackParams.cor[0]][attackParams.cor[1]].ship != null);
+    shipHit ? computerAttack() : switchPlayer();
+  }, 475);
 };
 
 function switchPlayer () {
   currentPlayer = currentPlayer == player1? player2: player1;
+  interactables.enemyMap.classList.toggle("disabled");
 };
 
 function initializeAttacks () {
