@@ -40,23 +40,33 @@ function attack (e) {
   const shipHit = player1.attack(player2, ...cor);
   updateAttackedCor("player", target, identifier, player2.map.grid[cor[0]][cor[1]].ship != null);
 
-  if (shipHit) return;
-
+  if (shipHit) {
+    if (!player2.allShipsSunk()) return;
+    return endGame("win");
+  }; 
   switchPlayer();
   computerAttack();
 };
 
-function computerAttack () {
-  if (currentPlayer != player2) return interactables.enemyMap.classList.remove("disabled");
+function computerAttack (followUp = false, prevAtkParams = null, delay = 500) {
+  if (currentPlayer != player2) return;
+
   setTimeout(() => {
+    if (followUp == true) {
+      return console.log(prevAtkParams);
+    }
     let attackParams = getValidAttackParameters();
     while (player1.isAttacked(...attackParams.cor)) attackParams = getValidAttackParameters();
 
     const target = document.querySelector(`#player-map>.cell[data-identifier="${attackParams.identifier}"]`);
     let shipHit = player2.attack(player1, ...attackParams.cor);
     updateAttackedCor("computer", target, attackParams.identifier, player1.map.grid[attackParams.cor[0]][attackParams.cor[1]].ship != null);
-    shipHit ? computerAttack() : switchPlayer();
-  }, 475);
+    if (shipHit) {
+      if (!player1.allShipsSunk()) return computerAttack(true, attackParams, 1500);
+      return endGame("lost");
+    };
+    switchPlayer();
+  }, delay);
 };
 
 function switchPlayer () {
@@ -67,3 +77,4 @@ function switchPlayer () {
 function initializeAttacks () {
   interactables.enemyMap.addEventListener("click",  attack);
 };
+

@@ -30,8 +30,7 @@ function placeShipsOnEnemyBoard (map, cb) {
   }
 };
 
-function getValidAttackParameters () {
-  let identifier = genRandIdentifier();
+function getValidAttackParameters (identifier = genRandIdentifier()) {
   return { identifier, cor: getCor(identifier)};
 };
 
