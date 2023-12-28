@@ -49,8 +49,6 @@ function attack (e) {
 };
 
 function computerAttack (followUp = false, prevAtkParams = null, delay = 500) {
-  if (currentPlayer != player2) return;
-
   setTimeout(() => {
     if (followUp == true) {
       return console.log(prevAtkParams);

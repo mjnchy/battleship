@@ -1,0 +1,28 @@
+#game-result-container {
+  visibility: hidden;
+  width: clamp(400px, 50vw, 800px);
+  height: clamp(300px, 25vh, 500px);
+  position: absolute;
+  top: -50%;
+  left: 50%;
+  background: var(--overlay1);
+  border-radius: 10px;
+  transform: translate(-50%, 0);
+  text-align: center;
+  transition: ease-in, 1s;
+}
+
+#game-result-container.visible {
+  visibility: visible;
+  transform: translate(-50%, 300%);
+}
+
+#game-result-container>.message {
+  width: 90%;
+  height: 70%;
+  margin:  auto;
+}
+
+#play-again {
+  margin: 5% auto;
+}
