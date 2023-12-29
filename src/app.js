@@ -2,6 +2,7 @@ import "./modules/styles/styles.js";
 import { Player } from "./modules/player/player.js";
 import { shipParameters, drawBoards, toggleSetupPrompt, interact, interactables, getCor, setupStatBoards, initializeGame, updateAttackedCor } from "./modules/DOM/dom.js";
 import { getValidAttackParameters, placeShipsOnEnemyBoard } from "./modules/gameai/gameai.js";
+import { endGame } from "./modules/loop/loop.js";
 
 let player1, player2, currentPlayer;
 
@@ -50,9 +51,6 @@ function attack (e) {
 
 function computerAttack (followUp = false, prevAtkParams = null, delay = 500) {
   setTimeout(() => {
-    if (followUp == true) {
-      return console.log(prevAtkParams);
-    }
     let attackParams = getValidAttackParameters();
     while (player1.isAttacked(...attackParams.cor)) attackParams = getValidAttackParameters();
 
