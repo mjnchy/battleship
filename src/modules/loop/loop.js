@@ -4,13 +4,13 @@ const results = {
 };
 
 function endGame (result) {
-  const wrapper = document.querySelector("#wrapper"),resultBoard = {
+  const container = document.querySelector("#gameboard-container"),resultBoard = {
     container: document.querySelector("#game-result-container"),
     header: document.querySelector("#result-header"),
     message: document.querySelector("#result-message"),
   };
 
-  wrapper.classList.add("disabled");
+  container.classList.add("disabled");
 
   resultBoard.header.textContent = `${results[result][0]}`;
   resultBoard.message.textContent = `${results[result][1]}`;

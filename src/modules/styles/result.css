@@ -19,10 +19,19 @@
 
 #game-result-container>.message {
   width: 90%;
-  height: 70%;
-  margin:  auto;
+  height: 50%;
+  margin: 10% auto 0;
 }
 
 #play-again {
   margin: 5% auto;
+}
+
+.result-header {
+  height: 50%;
+  font-size: 4rem;
+}
+
+#result-message {
+  font-size: 3rem;
 }
